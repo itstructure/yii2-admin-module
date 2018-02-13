@@ -13,39 +13,18 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * Class BaseController
  * Base controller class for the `admin` module.
  *
- * @property ModelInterface|Model|ActiveRecordInterface $model
- * @property Model|ActiveRecordInterface $searchModel
- * @property ValidateComponentInterface|null $validateComponent
  * @property bool $viewCreated
  * @property array $additionFields
  * @property array $additionAttributes
  * @property bool $isMultilanguage
+ * @property ModelInterface|Model|ActiveRecordInterface $model
+ * @property Model|ActiveRecordInterface $searchModel
+ * @property ValidateComponentInterface|null $validateComponent
  *
  * @package Itstructure\AdminModule\controllers
  */
 abstract class CommonAdminController extends AdminController
 {
-    /**
-     * Model object record.
-     *
-     * @var ModelInterface|Model|ActiveRecordInterface
-     */
-    protected $model;
-
-    /**
-     * Search new model object.
-     *
-     * @var Model|ActiveRecordInterface
-     */
-    protected $searchModel;
-
-    /**
-     * Multilanguage component.
-     *
-     * @var ValidateComponentInterface|null
-     */
-    protected $validateComponent = null;
-
     /**
      * Watch or not created record.
      *
@@ -77,6 +56,27 @@ abstract class CommonAdminController extends AdminController
      * @var bool
      */
     protected $isMultilanguage = false;
+
+    /**
+     * Model object record.
+     *
+     * @var ModelInterface|Model|ActiveRecordInterface
+     */
+    private $model;
+
+    /**
+     * Search new model object.
+     *
+     * @var Model|ActiveRecordInterface
+     */
+    private $searchModel;
+
+    /**
+     * Multilanguage component.
+     *
+     * @var ValidateComponentInterface|null
+     */
+    private $validateComponent = null;
 
     /**
      * Returns the name of the base model.
