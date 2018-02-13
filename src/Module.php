@@ -56,6 +56,13 @@ class Module extends BaseModule
     private $_view = null;
 
     /**
+     * Module translations.
+     *
+     * @var array|null
+     */
+    private static $_translations = null;
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -68,7 +75,7 @@ class Module extends BaseModule
             Yii::$app->getUser()->loginUrl = $this->loginUrl;
         }
 
-        $this->registerTranslations();
+        static::registerTranslations();
 
         /**
          * Set Profile validate component
@@ -79,6 +86,20 @@ class Module extends BaseModule
                 $this->components
             )
         );
+    }
+
+    /**
+     * Get the view.
+     *
+     * @return AdminView
+     */
+    public function getView()
+    {
+        if (null === $this->_view) {
+            $this->_view = $this->get('view');
+        }
+
+        return $this->_view;
     }
 
     /**
@@ -103,6 +124,10 @@ class Module extends BaseModule
      */
     public static function t($category, $message, $params = [], $language = null)
     {
+        if (null === static::$_translations){
+            static::registerTranslations();
+        }
+
         return Yii::t('modules/admin/' . $category, $message, $params, $language);
     }
 
@@ -111,37 +136,25 @@ class Module extends BaseModule
      *
      * @return void
      */
-    public function registerTranslations(): void
+    private static function registerTranslations(): void
     {
+        static::$_translations = [
+            'modules/admin/*' => [
+                'class'          => 'yii\i18n\PhpMessageSource',
+                'forceTranslation' => true,
+                'sourceLanguage' => Yii::$app->language,
+                'basePath'       => '@admin/messages',
+                'fileMap'        => [
+                    'modules/admin/main' => 'main.php',
+                    'modules/admin/languages' => 'languages.php',
+                    'modules/admin/admin-menu' => 'admin-menu.php',
+                ],
+            ]
+        ];
+
         Yii::$app->i18n->translations = ArrayHelper::merge(
-            [
-                'modules/admin/*' => [
-                    'class'          => 'yii\i18n\PhpMessageSource',
-                    'forceTranslation' => true,
-                    'sourceLanguage' => Yii::$app->language,
-                    'basePath'       => '@admin/messages',
-                    'fileMap'        => [
-                        'modules/admin/main' => 'main.php',
-                        'modules/admin/languages' => 'languages.php',
-                        'modules/admin/admin-menu' => 'admin-menu.php',
-                    ],
-                ]
-            ],
+            static::$_translations,
             Yii::$app->i18n->translations
         );
-    }
-
-    /**
-     * Get the view.
-     *
-     * @return AdminView
-     */
-    public function getView()
-    {
-        if (null === $this->_view) {
-            $this->_view = $this->get('view');
-        }
-
-        return $this->_view;
     }
 }
