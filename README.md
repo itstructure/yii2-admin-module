@@ -1,17 +1,23 @@
+Yii2 Admin module
+==============
+
 1 Introduction
-------------
+----------------------------
 
 **Yii2AdminModule** -- Module for the Yii2 framework with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) template, which provides the following options:
 - Use this module as base administrator dashboard to manage site content with the ability to extend it by children application CRUD's
 - Work in multilanguage mode for content
 - Work in multilanguage mode for dashboard
 
-## 2 Dependencies
+2 Dependencies
+----------------------------
+
 - php >= 7
 - composer
 - MySql >= 5.5
 
-## 3 Installation
+3 Installation
+----------------------------
 
 Via composer:
 
@@ -27,8 +33,10 @@ and command ```composer install```, if you install yii2 project extensions first
 
 or command ```composer update```, if all yii2 project extensions are already installed.
 
-## 4 Usage
-#### 4.1 Main properties
+4 Usage
+----------------------------
+
+### 4.1 Main properties
 
 The **name** of module: ```admin```
 
@@ -38,7 +46,8 @@ The **alias** to access in to module root directory: ```@admin```.
 
 The main module template **layout** is in: ```@admin/views/layouts/main-admin.php```.
 
-#### 4.2 Application config
+### 4.2 Application config
+
 Base application config must be like in example below:
 
 ```php
@@ -127,7 +136,8 @@ Parameter ```extraAssets``` - extra assets, can be like in examples:
     ]
     ```
 
-#### 4.3 Base controllers
+### 4.3 Base controllers
+
 In **Yii2AdminModule** there are two controllers, which can be used by child application 
 controllers:
 
@@ -159,16 +169,17 @@ controllers:
     model, which can be set in model except for those that are sent from the form.
     Example: information about the uploaded file, which was uploaded separate from the main send from the form.
 
-#### 4.4 Integrated controllers
+### 4.4 Integrated controllers
+
 In **Yii2AdminModule** there is one integrated controller:
 
 - ```LanguageController``` - to manage just languages for application data.
 
-#### 4.5 Multilanguage mode for dashboard tools
+### 4.5 Multilanguage mode for dashboard tools
 
 Multilanguage mode just for dashboard you can set by ```language``` parameter in app configuration: ```en-US```, ```ru-RU``` e.t.c.
 
-#### 4.6 Multilanguage mode for data
+### 4.6 Multilanguage mode for data
 
 There is an opportunity to set modes by application configuration, using parameter:
 
@@ -508,7 +519,9 @@ multilanguage data in application config, like in example:
     ]
     ```
 
-## License
+License
+----------------------------
+
 Copyright © 2018 Andrey Girnik girnikandrey@gmail.com.
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT). See LICENSE.txt for details.

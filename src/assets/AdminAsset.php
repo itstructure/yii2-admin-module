@@ -31,7 +31,6 @@ class AdminAsset extends AssetBundle
         'dist/css/AdminLTE.min.css',
     ];
     public $js = [
-        'bower_components/jquery/dist/jquery.min.js',
         'bower_components/fastclick/lib/fastclick.js',
         'dist/js/adminlte.min.js',
         'bower_components/jquery-sparkline/dist/jquery.sparkline.min.js',

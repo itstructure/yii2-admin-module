@@ -1,5 +1,9 @@
 ### CHANGE LOG:
 
+**1.2.1:**
+- Removing the Asset Link to jquery.min.js.
+- Modify README decor.
+
 **1.2.0:**
 - Change var type from protected to private in CommonAdminController for: model, searchModel, 
 validateComponent. They can be set and got just only by magic methods.
