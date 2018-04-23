@@ -5,7 +5,7 @@ use Itstructure\AdminModule\widgets\menu\MainMenuItem;
 /* @var $item MainMenuItem */
 ?>
 
-<li <?php if ($item->hasSubItems()):?> class="treeview" <?php endif; ?> > <!--class="active"-->
+<li <?php if (!empty($item->getClass())):?> class="<?php echo $item->getClass(); ?>" <?php endif; ?> >
 
     <a href="<?php echo $item->getUrl() ?>" target="_self">
 

@@ -4,9 +4,9 @@
     "type": "package",
     "keywords": ["yii2", "yii 2", "admin", "module", "dashboard"],
     "require": {
-        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2": "~2.0.15",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "almasaeed2010/adminlte": "2.4.0",
+        "almasaeed2010/adminlte": "~2.4.3",
         "itstructure/yii2-field-widgets": "^1.0.0"
     },
     "license": "MIT",

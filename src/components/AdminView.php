@@ -10,20 +10,26 @@ use Itstructure\AdminModule\assets\AdminAsset;
  * Class AdminView
  * Default view for the Admin View
  *
- * @property array $mainMenuConfig
- * @property string $bodyLayout
- * @property string $skin
- * @property null|array|string $assetBundleConfig
- * @property string $homeUrl
- * @property array $extraAssets
- * @property string[] $userBody
- * @property string $defaultAssetBundleClass
- * @property string $companyName
- * @property string $shotCompanyName
- * @property string $profileLink
- * @property string $signOutLink
+ * @property array $mainMenuConfig Sidebar menu config.
+ * @property string $bodyLayout Admin layout type.
+ * @property string $skin Admin layout theme. By default are used blue skin.
+ * @property null|array|string $assetBundleConfig AssetBundle config.
+ * @property string $homeUrl Home URL.
+ * @property array $extraAssets An array of extra asset. Each asset can be specified one of the following format:
+ * - a string thar represent a class name of extra asset;
+ * - an array that must contain a class key and may contain other settings of asset bundle.
+ * @see BaseYii::createObject()
+ * @property string[] $userBody This array contain a key->value pairs where key - is link name and value is link
+ * that will be rendered in "user-body" section of menu.
+ * @property string $defaultAssetBundleClass Asset bundle class-name using by default for admin view.
+ * @property string $companyName Company name.
+ * @property string $shotCompanyName Short company name.
+ * @property string $profileLink Link to user profile.
+ * @property string $signOutLink Link to sign-out action.
  *
  * @package Itstructure\AdminModule\components
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class AdminView extends View
 {
@@ -54,45 +60,38 @@ class AdminView extends View
 
     /**
      * Sidebar menu config.
-     *
      * @var array
      */
     public $mainMenuConfig = [];
 
     /**
-     *  Admin layout type.
-     *
+     * Admin layout type.
      * @var string
      */
     public $bodyLayout = self::LAYOUT_SIDEBAR_MINI;
 
     /**
-     *  Admin layout theme. By default are used blue skin.
-     *
+     * Admin layout theme. By default are used blue skin.
      * @var string
      */
     public $skin = self::SKIN_BLUE;
 
     /**
      * AssetBundle config.
-     *
      * @var null|array|string
      */
     public $assetBundleConfig = null;
 
     /**
      * Home URL.
-     *
      * @var string
      */
     public $homeUrl = '/admin';
 
     /**
      * An array of extra asset. Each asset can be specified one of the following format:
-     *
      * - a string thar represent a class name of extra asset;
      * - an array that must contain a class key and may contain other settings of asset bundle.
-     *
      * @see BaseYii::createObject()
      * @var array
      */
@@ -101,49 +100,42 @@ class AdminView extends View
     /**
      * This array contain a key->value pairs where key - is link name and value is link
      * that will be rendered in "user-body" section of menu.
-     *
      * @var string[]
      */
     public $userBody = [];
 
     /**
      * Asset bundle class-name using by default for admin view.
-     *
      * @var string
      */
     private $defaultAssetBundleClass = AdminAsset::class;
 
     /**
      * Company name.
-     *
      * @var string
      */
     public $companyName = 'Company';
 
     /**
-     * Short company name
-     *
+     * Short company name.
      * @var string
      */
     public $shotCompanyName = '';
 
     /**
-     * Link to user profile;
-     *
+     * Link to user profile.
      * @var string
      */
     public $profileLink = '/profile';
 
     /**
      * Link to sign-out action.
-     *
      * @var string
      */
     public $signOutLink = '/site/logout';
 
     /**
      * Initializes the object.
-     *
      * @return void
      */
     public function init(): void
@@ -154,7 +146,6 @@ class AdminView extends View
 
     /**
      * Register a main admin asset.
-     *
      * @return void
      */
     private function registerAdminAsset(): void
@@ -165,7 +156,6 @@ class AdminView extends View
 
     /**
      * Register an extra assets.
-     *
      * @return void
      */
     private function registerExtraAssets(): void
@@ -178,9 +168,7 @@ class AdminView extends View
 
     /**
      * Register an asset bundle in view.
-     *
      * @param array $assetConfig config of asset bundle.
-     *
      * @return void
      */
     private function registerAsset(array $assetConfig): void
@@ -197,7 +185,6 @@ class AdminView extends View
 
     /**
      * Return config array for create instance of AssetBundle.
-     *
      * @return array
      */
     private function getAdminAssetConfig(): array
@@ -221,11 +208,8 @@ class AdminView extends View
 
     /**
      * Prepare and return an extra asset config.
-     *
      * @param string|array $asset extra asset config.
-     *
      * @throws InvalidConfigException if the configuration is invalid.
-     *
      * @return array
      */
     private function getExtraAssetConfig($asset): array

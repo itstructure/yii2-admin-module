@@ -10,23 +10,23 @@ use Itstructure\AdminModule\interfaces\ModelInterface;
  * Class MultilanguageValidateModel
  * General validation model together with multilingual fields.
  *
- * @property array $dynamicFields
- * @property ActiveRecord|MultilanguageTrait $mainModel
+ * @property array $dynamicFields Dynamic fields from which the translated fields are formed.
+ * @property ActiveRecord|MultilanguageTrait $mainModel Basic data model.
  *
  * @package Itstructure\AdminModule\models
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class MultilanguageValidateModel extends Model implements ModelInterface
 {
     /**
      * Dynamic fields from which the translated fields are formed.
-     *
      * @var array
      */
     public $dynamicFields = [];
 
     /**
      * Basic data model.
-     *
      * @var ActiveRecord|MultilanguageTrait
      */
     public $mainModel;
@@ -40,7 +40,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Validation rules for all fields together with dynamic.
-     *
      * @return array
      */
     public function rules(): array
@@ -53,7 +52,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Scenarios.
-     *
      * @return array
      */
     public function scenarios(): array
@@ -67,7 +65,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Labels of all fields.
-     *
      * @inheritdoc
      */
     public function attributeLabels()
@@ -105,10 +102,8 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Gets the value of the field.
-     *
      * @param string $name - field name.
-     *
-     * @return mixed|null
+     * @return mixed
      */
     public function __get($name)
     {
@@ -121,21 +116,17 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Specifies the value of the field.
-     *
      * @param string $name - name of field.
-     *
      * @param mixed  $value - value to be stored in field.
-     *
-     * @return string
+     * @return void
      */
-    public function __set($name, $value): string
+    public function __set($name, $value)
     {
-        return $this->{$name} = $value;
+        $this->{$name} = $value;
     }
 
     /**
      * Attributes along with dynamic and from the basic model.
-     *
      * @return array
      */
     public function attributes(): array
@@ -148,7 +139,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Saves data in the main model.
-     *
      * @return bool
      */
     public function save(): bool
@@ -174,7 +164,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns the id of the current model.
-     *
      * @return int
      */
     public function getId()
@@ -184,7 +173,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns an array of all multilanguage attributes.
-     *
      * @return array
      */
     private function getDynamicAttributes(): array
@@ -201,7 +189,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Creates validation rules for dynamic fields for all languages.
-     *
      * @return array
      */
     private function getDynamicValidationRules(): array
@@ -245,7 +232,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns the list of available languages in the short name format.
-     *
      * @return array
      */
     private function getShortLanguageList(): array

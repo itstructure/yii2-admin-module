@@ -8,13 +8,17 @@ use Itstructure\FieldWidgets\interfaces\{LanguageListInterface, LanguageFieldInt
 /**
  * This is the model class for table "language".
  *
- * @property int            $id
- * @property string         $shortName
- * @property string         $name
- * @property string         $locale
- * @property int            $default
- * @property string         $created_at
- * @property string         $updated_at
+ * @property int    $id
+ * @property string $shortName
+ * @property string $name
+ * @property string $locale
+ * @property int    $default
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * @package Itstructure\AdminModule\models
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class Language extends ActiveRecord implements LanguageListInterface, LanguageFieldInterface, ModelInterface
 {
@@ -82,9 +86,7 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Reset the default language.
-     *
      * @param boolean $insert
-     *
      * @return mixed
      */
     public function beforeSave($insert)
@@ -106,7 +108,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns the default language.
-     *
      * @return array|null|\yii\db\ActiveRecord
      */
     public static function getDefaultLanguage()
@@ -120,7 +121,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * List of available languages in short name format.
-     *
      * @return array
      */
     public static function getShortLanguageList(): array
@@ -133,7 +133,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns a list of available languages in the system.
-     *
      * @return Language[]
      */
     public function getLanguageList(): array
@@ -143,7 +142,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns the full name of the language.
-     *
      * @return string
      */
     public function getName(): string
@@ -153,7 +151,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns the short name of the language.
-     *
      * @return string
      */
     public function getShortName(): string
@@ -163,7 +160,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns default mode.
-     *
      * @return string
      */
     public function getDefault(): string
@@ -173,7 +169,6 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns current model id.
-     *
      * @return int
      */
     public function getId(): int

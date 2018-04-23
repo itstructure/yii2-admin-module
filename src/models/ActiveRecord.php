@@ -8,13 +8,14 @@ use yii\db\Expression;
 /**
  * Class ActiveRecord
  *
- * @package app\components\db
+ * @package Itstructure\AdminModule\models
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class ActiveRecord extends \yii\db\ActiveRecord
 {
     /**
      * Connect behavior to the basic model.
-     *
      * @return array
      */
     public function behaviors()

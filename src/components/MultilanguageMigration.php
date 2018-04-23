@@ -9,6 +9,8 @@ use yii\helpers\ArrayHelper;
  * Class to extend migration with multilanguage.
  *
  * @package Itstructure\AdminModule\components
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class MultilanguageMigration extends \yii\db\Migration
 {
@@ -24,11 +26,9 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Creates table with timestamp fields: created_at and updated_at.
-     *
      * @param string $table - table name.
      * @param array $columns - array with names and types of columns.
      * @param null   $options - additional SQL code.
-     *
      * @return void
      */
     public function createTableWithTimestamps(string $table, array $columns, $options = null): void
@@ -53,12 +53,10 @@ class MultilanguageMigration extends \yii\db\Migration
      *  - language_id
      *  - title
      *  - text
-     *
      * @param string $table - table name which needs to be translated.
      * @param array  $multiLanguageColumns - list of multilanguage fields.
      * @param array  $columns - list of simple fields.
      * @param string $options - additional SQL code.
-     *
      * @return void
      */
     public function createMultiLanguageTable(string $table, array $multiLanguageColumns, array$columns = [], $options = null): void
@@ -103,9 +101,7 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Drop main table with translate table.
-     *
      * @param string $table - main table name.
-     *
      * @return void
      */
     public function dropMultiLanguageTable(string $table): void
@@ -124,7 +120,6 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Returns key name for link translate table with languages table.
-     *
      * @return string
      */
     public static function getKeyToLanguageTable(): string
@@ -134,10 +129,8 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Returns foreign key to other table.
-     *
      * @param string $table
      * @param string $column
-     *
      * @return string
      */
     private function createFkName(string $table, string $column): string
@@ -147,9 +140,7 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Returns table name for translates.
-     *
      * @param string $table - main table name.
-     *
      * @return string
      */
     private function getTranslateTableName(string $table): string
@@ -159,9 +150,7 @@ class MultilanguageMigration extends \yii\db\Migration
 
     /**
      * Returns key name for link translate table with main table.
-     *
      * @param string $table - main table name.
-     *
      * @return string
      */
     private function getKeyToPrimaryTable(string $table): string

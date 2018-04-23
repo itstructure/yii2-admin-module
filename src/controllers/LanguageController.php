@@ -10,6 +10,8 @@ use Itstructure\AdminModule\models\{Language, LanguageSearch};
  * LanguageController implements the CRUD actions for Language model.
  *
  * @package Itstructure\AdminModule\controllers
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class LanguageController extends CommonAdminController
 {
@@ -25,11 +27,8 @@ class LanguageController extends CommonAdminController
 
     /**
      * Set language as default.
-     *
      * @param $languageId
-     *
      * @return \yii\web\Response
-     *
      * @throws NotFoundHttpException
      */
     public function actionSetDefault($languageId)
@@ -47,7 +46,6 @@ class LanguageController extends CommonAdminController
 
     /**
      * Returns Language model name.
-     *
      * @return string
      */
     protected function getModelName():string
@@ -57,7 +55,6 @@ class LanguageController extends CommonAdminController
 
     /**
      * Returns LanguageSearch model name.
-     *
      * @return string
      */
     protected function getSearchModelName():string

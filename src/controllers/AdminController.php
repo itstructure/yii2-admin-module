@@ -11,12 +11,13 @@ use yii\filters\{VerbFilter, AccessControl};
  * Default controller for the `admin` module.
  *
  * @package Itstructure\AdminModule\controllers
+ *
+ * @author Andrey Girnik <girnikandrey@gmail.com>
  */
 class AdminController extends Controller
 {
     /**
      * Initialize.
-     *
      * @return void
      */
     public function init()
@@ -25,7 +26,6 @@ class AdminController extends Controller
     }
 
     /**
-     *
      * @inheritdoc
      */
     public function behaviors()
@@ -53,7 +53,6 @@ class AdminController extends Controller
 
     /**
      * Give ability of configure view to the module class.
-     *
      * @return \yii\base\View|\yii\web\View
      */
     public function getView()
