@@ -1,5 +1,9 @@
 ### CHANGE LOG:
 
+**1.3.1 May 5, 2018:**
+- Change display register date in admin-menu with using date() function. In order not to depend on the need to install an intl extension.
+- Setting a minimum php version restriction 7.1.
+
 **1.3.0 April 23, 2018:**
 - Change configuration parameters for MainMenuItem widget. Added attribute display. The meaning of the active attribute has been changed to a selection.
 - Add getAdditionFields() function in CommonAdminController.

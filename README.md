@@ -12,7 +12,7 @@ Yii2 Admin module
 2 Dependencies
 ----------------------------
 
-- php >= 7
+- php >= 7.1
 - composer
 - MySql >= 5.5
 

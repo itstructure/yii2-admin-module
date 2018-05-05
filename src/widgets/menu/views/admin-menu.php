@@ -26,8 +26,7 @@ use Itstructure\AdminModule\Module;
             <p> <?php echo $user->getFullName() ?> - <?php echo $user->getRoleName() ?>
                 <small>
                     <?php echo Module::t('admin-menu', 'Member since') ?>
-                    <?php echo \Yii::t('app', '{0,date}', $user->getRegisterDate()
-                        ->getTimestamp()); ?>
+                    <?php echo date('d.m.Y H:i:s', $user->getRegisterDate()->getTimestamp()); ?>
                 </small>
             </p>
         </li>

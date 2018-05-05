@@ -6,7 +6,7 @@ use Yii;
 use yii\db\ActiveRecordInterface;
 use yii\helpers\ArrayHelper;
 use yii\base\{Model, UnknownMethodException, InvalidConfigException};
-use yii\web\{IdentityInterface, ConflictHttpException, BadRequestHttpException, NotFoundHttpException, Controller};
+use yii\web\{IdentityInterface, ConflictHttpException, BadRequestHttpException, NotFoundHttpException};
 use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterface};
 
 /**
