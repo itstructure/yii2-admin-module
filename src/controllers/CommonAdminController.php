@@ -5,7 +5,7 @@ namespace Itstructure\AdminModule\controllers;
 use Yii;
 use yii\db\ActiveRecordInterface;
 use yii\helpers\ArrayHelper;
-use yii\base\{Model, UnknownMethodException, InvalidConfigException};
+use yii\base\{UnknownMethodException, InvalidConfigException};
 use yii\web\{IdentityInterface, ConflictHttpException, BadRequestHttpException, NotFoundHttpException};
 use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterface};
 
@@ -17,9 +17,9 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * @property array $additionFields Addition fields for the view template.
  * @property array $additionAttributes Addition attributes with values for the model.
  * @property bool $isMultilanguage Installing the multilingual mode.
- * @property ModelInterface|Model|ActiveRecordInterface $model Model object record.
- * @property Model|ActiveRecordInterface $searchModel Search new model object.
- * @property ValidateComponentInterface|null $validateComponent Validate component.
+ * @property ModelInterface $model Model object record.
+ * @property ActiveRecordInterface $searchModel Search new model object.
+ * @property ValidateComponentInterface $validateComponent Validate component.
  *
  * @package Itstructure\AdminModule\controllers
  *
@@ -57,21 +57,21 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Model object record.
-     * @var ModelInterface|Model|ActiveRecordInterface
+     * @var ModelInterface
      */
     private $model;
 
     /**
      * Search new model object.
-     * @var Model|ActiveRecordInterface
+     * @var ActiveRecordInterface
      */
     private $searchModel;
 
     /**
      * Validate component.
-     * @var ValidateComponentInterface|null
+     * @var ValidateComponentInterface
      */
-    private $validateComponent = null;
+    private $validateComponent;
 
     /**
      * Returns the name of the base model.
@@ -98,7 +98,7 @@ abstract class CommonAdminController extends AdminController
             if (null === $validateComponent){
                 throw new InvalidConfigException('Multilanguage validate component is not defined.');
             }
-
+            /** @var ValidateComponentInterface $validateComponent */
             $this->setValidateComponent($validateComponent);
         }
 
@@ -134,7 +134,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns model.
-     * @return ModelInterface|Model|ActiveRecordInterface
+     * @return ModelInterface
      */
     public function getModel(): ModelInterface
     {
@@ -143,7 +143,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns search model.
-     * @return ActiveRecordInterface|Model
+     * @return ActiveRecordInterface
      */
     public function getSearchModel(): ActiveRecordInterface
     {
@@ -277,7 +277,7 @@ abstract class CommonAdminController extends AdminController
     {
         $model = $this->findModel($id);
 
-        if ($model instanceof IdentityInterface && $id == Yii::$app->user->identity->getId()) {
+        if (($model instanceof IdentityInterface) && $id == Yii::$app->user->identity->getId()) {
             throw new ConflictHttpException('You can not delete yourself.');
         };
 

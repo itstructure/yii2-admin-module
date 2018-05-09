@@ -15,10 +15,10 @@ class m171202_104405_create_language_table extends MultilanguageMigration
     {
         $this->createTableWithTimestamps(Language::tableName(), [
             'id' => $this->primaryKey(),
-            'locale' => $this->string(),
-            'shortName' => $this->string(),
-            'name' => $this->string(),
-            'default' => $this->boolean()
+            'locale' => $this->string(8),
+            'shortName' => $this->string(3),
+            'name' => $this->string(64),
+            'default' => $this->tinyInteger(2)
                 ->notNull()
                 ->defaultValue(0),
         ]);

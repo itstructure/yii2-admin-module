@@ -75,7 +75,9 @@ trait MultilanguageTrait
             return parent::__get($name);
         }
 
-        list($field, $lang) = explode('_', $name);
+        $nameArray = explode('_', $name);
+        $lang = array_pop($nameArray);
+        $field = implode('_', $nameArray);
 
         foreach ($this->translateList as $translate) {
             if ($translate->language->shortName === $lang) {
@@ -101,7 +103,9 @@ trait MultilanguageTrait
             return;
         }
 
-        list($field, $lang) = explode('_', $name);
+        $nameArray = explode('_', $name);
+        $lang = array_pop($nameArray);
+        $field = implode('_', $nameArray);
 
         $this->storage[$lang][$field] = $value;
     }
@@ -145,7 +149,7 @@ trait MultilanguageTrait
             ])->id
         ]);
 
-        if ($field != null && $defaultTranslate->andWhere(['!=', $field, ''])->count() == 0){
+        if ($field !== null && $defaultTranslate->andWhere(['!=', $field, ''])->count() == 0){
 
             $result = $mainRequest->where([
                 '!=', $field, ''
@@ -154,7 +158,7 @@ trait MultilanguageTrait
             return $result == null ? '-' : $result->{$field};
         }
 
-        return $field == null ? $defaultTranslate->one() : $defaultTranslate->one()->{$field};
+        return $field === null ? $defaultTranslate->one() : $defaultTranslate->one()->{$field};
     }
 
     /**
@@ -168,7 +172,8 @@ trait MultilanguageTrait
             return false;
         }
 
-        list(, $lang) = explode('_', $name);
+        $nameArray = explode('_', $name);
+        $lang = array_pop($nameArray);
 
         if (null === $lang) {
             return false;

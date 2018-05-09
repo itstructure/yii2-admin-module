@@ -4,11 +4,14 @@ namespace Itstructure\AdminModule\controllers;
 
 use Yii;
 use yii\web\Controller;
+use Itstructure\AdminModule\Module;
 use yii\filters\{VerbFilter, AccessControl};
 
 /**
  * Class AdminController
  * Default controller for the `admin` module.
+ *
+ * @property Module $module
  *
  * @package Itstructure\AdminModule\controllers
  *

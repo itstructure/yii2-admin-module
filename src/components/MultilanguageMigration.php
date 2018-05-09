@@ -28,10 +28,10 @@ class MultilanguageMigration extends \yii\db\Migration
      * Creates table with timestamp fields: created_at and updated_at.
      * @param string $table - table name.
      * @param array $columns - array with names and types of columns.
-     * @param null   $options - additional SQL code.
+     * @param string|null $options - additional SQL code.
      * @return void
      */
-    public function createTableWithTimestamps(string $table, array $columns, $options = null): void
+    public function createTableWithTimestamps(string $table, array $columns, string $options = null): void
     {
         $columns = ArrayHelper::merge($columns, [
             'created_at' => $this->dateTime(),
@@ -56,10 +56,10 @@ class MultilanguageMigration extends \yii\db\Migration
      * @param string $table - table name which needs to be translated.
      * @param array  $multiLanguageColumns - list of multilanguage fields.
      * @param array  $columns - list of simple fields.
-     * @param string $options - additional SQL code.
+     * @param string|null $options - additional SQL code.
      * @return void
      */
-    public function createMultiLanguageTable(string $table, array $multiLanguageColumns, array$columns = [], $options = null): void
+    public function createMultiLanguageTable(string $table, array $multiLanguageColumns, array$columns = [], string $options = null): void
     {
         $this->createTableWithTimestamps($table,
             ArrayHelper::merge(['id' => $this->primaryKey()], $columns)

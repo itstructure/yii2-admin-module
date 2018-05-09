@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Module::t('main', 'Default'),
                 'format' => 'raw',
                 'value' => function(Language $model) {
-                    if ($model->default) {
+                    if ($model->default === 1) {
                         return Html::tag('i', '', [
                             'class' => 'fa fa-check-circle',
                         ]);
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{setDefault} {view} {update} {delete}',
                 'visibleButtons' => [
                     'setDefault' => function($model, $key, $index) {
-                        return !$model->default;
+                        return $model->default !== 1;
                     },
                 ],
             ],

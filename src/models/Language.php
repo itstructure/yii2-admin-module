@@ -57,13 +57,19 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
                 'required',
             ],
             [
-                [
-                    'locale',
-                    'shortName',
-                    'name',
-                ],
+                'locale',
                 'string',
-                'max' => 255,
+                'max' => 8,
+            ],
+            [
+                'shortName',
+                'string',
+                'max' => 3,
+            ],
+            [
+                'name',
+                'string',
+                'max' => 64,
             ],
         ];
     }
@@ -91,7 +97,7 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
      */
     public function beforeSave($insert)
     {
-        if (true == $this->default) {
+        if ($this->default == 1) {
 
             $default = static::findOne([
                 'default' => 1,
@@ -160,9 +166,9 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
 
     /**
      * Returns default mode.
-     * @return string
+     * @return int
      */
-    public function getDefault(): string
+    public function getDefault(): int
     {
         return $this->default;
     }

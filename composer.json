@@ -5,10 +5,10 @@
     "keywords": ["yii2", "yii 2", "admin", "module", "dashboard"],
     "require": {
         "php": ">=7.1.0",
-        "yiisoft/yii2": "~2.0.15",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2": "2.*",
+        "yiisoft/yii2-bootstrap": "^2.0",
         "almasaeed2010/adminlte": "~2.4.3",
-        "itstructure/yii2-field-widgets": "^1.1.0"
+        "itstructure/yii2-field-widgets": "^1.2.0"
     },
     "license": "MIT",
     "authors": [
@@ -17,7 +17,8 @@
             "email": "girnikandrey@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Itstructure\\AdminModule\\": "src/"

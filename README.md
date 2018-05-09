@@ -1,6 +1,13 @@
 Yii2 Admin module
 ==============
 
+[![Latest Stable Version](https://poser.pugx.org/itstructure/yii2-admin-module/v/stable)](https://packagist.org/packages/itstructure/yii2-admin-module)
+[![Latest Unstable Version](https://poser.pugx.org/itstructure/yii2-admin-module/v/unstable)](https://packagist.org/packages/itstructure/yii2-admin-module)
+[![License](https://poser.pugx.org/itstructure/yii2-admin-module/license)](https://packagist.org/packages/itstructure/yii2-admin-module)
+[![Total Downloads](https://poser.pugx.org/itstructure/yii2-admin-module/downloads)](https://packagist.org/packages/itstructure/yii2-admin-module)
+[![Build Status](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/badges/build.png?b=master)](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/?branch=master)
+
 1 Introduction
 ----------------------------
 
@@ -21,12 +28,12 @@ Yii2 Admin module
 
 Via composer:
 
-```composer require "itstructure/yii2-admin-module": "^1.0.0"```
+```composer require "itstructure/yii2-admin-module": "^1.4.0"```
 
 or in section **require** of composer.json file set the following:
 ```
 "require": {
-    "itstructure/yii2-admin-module": "^1.0.0"
+    "itstructure/yii2-admin-module": "^1.4.0"
 }
 ```
 and command ```composer install```, if you install yii2 project extensions first,

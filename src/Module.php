@@ -67,11 +67,11 @@ class Module extends BaseModule
 
         Yii::setAlias('@admin', static::getBaseDir());
 
-        if (null !== $this->loginUrl) {
+        if (null !== $this->loginUrl && method_exists(Yii::$app, 'getUser')) {
             Yii::$app->getUser()->loginUrl = $this->loginUrl;
         }
 
-        static::registerTranslations();
+        self::registerTranslations();
 
         /**
          * Set Profile validate component
@@ -116,8 +116,8 @@ class Module extends BaseModule
      */
     public static function t($category, $message, $params = [], $language = null)
     {
-        if (null === static::$_translations){
-            static::registerTranslations();
+        if (null === self::$_translations){
+            self::registerTranslations();
         }
 
         return Yii::t('modules/admin/' . $category, $message, $params, $language);
@@ -129,7 +129,7 @@ class Module extends BaseModule
      */
     private static function registerTranslations(): void
     {
-        static::$_translations = [
+        self::$_translations = [
             'modules/admin/*' => [
                 'class'          => 'yii\i18n\PhpMessageSource',
                 'forceTranslation' => true,
@@ -144,7 +144,7 @@ class Module extends BaseModule
         ];
 
         Yii::$app->i18n->translations = ArrayHelper::merge(
-            static::$_translations,
+            self::$_translations,
             Yii::$app->i18n->translations
         );
     }
