@@ -12,6 +12,7 @@ use yii\filters\{VerbFilter, AccessControl};
  * Default controller for the `admin` module.
  *
  * @property Module $module
+ * @property string $urlPrefix Url prefix for redirect and view links.
  *
  * @package Itstructure\AdminModule\controllers
  *
@@ -20,12 +21,29 @@ use yii\filters\{VerbFilter, AccessControl};
 class AdminController extends Controller
 {
     /**
+     * Url prefix for redirect and view links.
+     * @var string
+     */
+    protected $urlPrefix = '';
+
+    /**
      * Initialize.
      * @return void
      */
     public function init()
     {
         $this->view->params['user'] = Yii::$app->user->identity;
+    }
+
+    /**
+     * @param \yii\base\Action $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        $this->view->params['urlPrefix'] = $this->urlPrefix;
+
+        return parent::beforeAction($action);
     }
 
     /**

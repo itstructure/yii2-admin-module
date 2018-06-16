@@ -17,7 +17,6 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * @property array $additionFields Addition fields for the view template.
  * @property array $additionAttributes Addition attributes with values for the model.
  * @property bool $isMultilanguage Installing the multilingual mode.
- * @property string $urlPrefix Url prefix for redirect and view links.
  * @property ModelInterface $model Model object record.
  * @property ActiveRecordInterface $searchModel Search new model object.
  * @property ValidateComponentInterface $validateComponent Validate component.
@@ -55,12 +54,6 @@ abstract class CommonAdminController extends AdminController
      * @var bool
      */
     protected $isMultilanguage = false;
-
-    /**
-     * Url prefix for redirect and view links.
-     * @var string
-     */
-    protected $urlPrefix = '';
 
     /**
      * Model object record.
@@ -110,17 +103,6 @@ abstract class CommonAdminController extends AdminController
         }
 
         parent::init();
-    }
-
-    /**
-     * @param \yii\base\Action $action
-     * @return bool
-     */
-    public function beforeAction($action)
-    {
-        $this->view->params['urlPrefix'] = $this->urlPrefix;
-
-        return parent::beforeAction($action);
     }
 
     /**

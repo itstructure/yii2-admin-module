@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.5.1 June 16, 2018:**
+- Move ```urlPrefix``` parameter from ```CommonAdminController``` to ```AdminController``` for redirect and view links.
+
 **1.5.0 June 16, 2018:**
 - Add ```urlPrefix``` parameter in to ```CommonAdminController``` for redirect and view links.
 
