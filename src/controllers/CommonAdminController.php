@@ -17,6 +17,7 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * @property array $additionFields Addition fields for the view template.
  * @property array $additionAttributes Addition attributes with values for the model.
  * @property bool $isMultilanguage Installing the multilingual mode.
+ * @property string $urlPrefix Url prefix for redirect and view links.
  * @property ModelInterface $model Model object record.
  * @property ActiveRecordInterface $searchModel Search new model object.
  * @property ValidateComponentInterface $validateComponent Validate component.
@@ -54,6 +55,12 @@ abstract class CommonAdminController extends AdminController
      * @var bool
      */
     protected $isMultilanguage = false;
+
+    /**
+     * Url prefix for redirect and view links.
+     * @var string
+     */
+    protected $urlPrefix = '';
 
     /**
      * Model object record.
@@ -103,6 +110,17 @@ abstract class CommonAdminController extends AdminController
         }
 
         parent::init();
+    }
+
+    /**
+     * @param \yii\base\Action $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        $this->view->params['urlPrefix'] = $this->urlPrefix;
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -173,7 +191,7 @@ abstract class CommonAdminController extends AdminController
             ArrayHelper::merge(
                 [
                     'searchModel' => $this->searchModel,
-                    'dataProvider' => $this->searchModel->search(Yii::$app->request->queryParams),
+                    'dataProvider' => $this->searchModel->search(Yii::$app->request->queryParams)
                 ],
                 $this->getAdditionFields()
             )
@@ -190,7 +208,7 @@ abstract class CommonAdminController extends AdminController
         return $this->render('view',
             ArrayHelper::merge(
                 [
-                    'model' => $this->findModel($id),
+                    'model' => $this->findModel($id)
                 ],
                 $this->getAdditionFields()
             )
@@ -213,12 +231,12 @@ abstract class CommonAdminController extends AdminController
 
             if ($this->viewCreated) {
                 $redirectParams = [
-                    'view',
+                    $this->urlPrefix.'view',
                     'id' => $this->model->getId(),
                 ];
             } else {
                 $redirectParams = [
-                    'index',
+                    $this->urlPrefix.'index',
                 ];
             }
 
@@ -228,7 +246,7 @@ abstract class CommonAdminController extends AdminController
         return $this->render('create',
             ArrayHelper::merge(
                 [
-                    'model' => $this->model,
+                    'model' => $this->model
                 ],
                 $this->getAdditionFields()
             )
@@ -251,7 +269,7 @@ abstract class CommonAdminController extends AdminController
             $this->model->save()) {
 
             return $this->redirect([
-                'view',
+                $this->urlPrefix.'view',
                 'id' => $this->model->getId(),
             ]);
         }
@@ -259,7 +277,7 @@ abstract class CommonAdminController extends AdminController
         return $this->render('update',
             ArrayHelper::merge(
                 [
-                    'model' => $this->model,
+                    'model' => $this->model
                 ],
                 $this->getAdditionFields()
             )
@@ -283,7 +301,7 @@ abstract class CommonAdminController extends AdminController
 
         $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect([$this->urlPrefix.'index']);
     }
 
     /**

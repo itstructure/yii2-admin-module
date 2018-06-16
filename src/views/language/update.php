@@ -6,8 +6,19 @@ use Itstructure\AdminModule\Module;
 /* @var $model Itstructure\AdminModule\models\Language */
 
 $this->title = Module::t('languages', 'Update language') . ': ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Module::t('languages', 'Languages'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = [
+    'label' => Module::t('languages', 'Languages'),
+    'url' => [
+        $this->params['urlPrefix'].'index'
+    ]
+];
+$this->params['breadcrumbs'][] = [
+    'label' => $model->name,
+    'url' => [
+        $this->params['urlPrefix'].'view',
+        'id' => $model->id
+    ]
+];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="language-update">

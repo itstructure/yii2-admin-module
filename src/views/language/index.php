@@ -17,7 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a(Module::t('main', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php echo Html::a(Module::t('main', 'Create'), [
+            $this->params['urlPrefix'].'create'
+        ], [
+            'class' => 'btn btn-success'
+        ]) ?>
     </p>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,7 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Module::t('languages', 'Language name'),
                 'value' => function($searchModel) {
                     return Html::a($searchModel->name,
-                        Url::to(['view', 'id' => $searchModel->id])
+                        Url::to([
+                            $this->params['urlPrefix'].'view',
+                            'id' => $searchModel->id
+                        ])
                     );
                 },
                 'format' => 'raw',
@@ -50,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
 
                     return Html::a(Module::t('languages', 'Set this language as default'), Url::to([
-                        'set-default',
+                        $this->params['urlPrefix'].'set-default',
                         'languageId' => $model->id,
                     ]), [
                         'title' => Module::t('languages', 'Set this language as default'),
@@ -76,6 +83,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         return $model->default !== 1;
                     },
                 ],
+                'urlCreator'=>function($action, $model, $key, $index){
+                    return Url::to([
+                        $this->params['urlPrefix'].$action,
+                        'id' => $model->id
+                    ]);
+                }
             ],
         ],
     ]); ?>

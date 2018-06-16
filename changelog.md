@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.5.0 June 16, 2018:**
+- Add ```urlPrefix``` parameter in to ```CommonAdminController``` for redirect and view links.
+
 **1.4.0 May 12, 2018:**
 - Fixes bugs for attributes declaration in: CommonAdminController, ModelInterface, Language model, view template of language entity.
 - Fixes for detect language and field name in MultilanguageTrait.
