@@ -13,6 +13,7 @@ use yii\filters\{VerbFilter, AccessControl};
  *
  * @property Module $module
  * @property string $urlPrefix Url prefix for redirect and view links.
+ * @property string $urlPrefixNeighbor Url prefix for redirect and view links of neighbor entity.
  *
  * @package Itstructure\AdminModule\controllers
  *
@@ -25,6 +26,12 @@ class AdminController extends Controller
      * @var string
      */
     protected $urlPrefix = '';
+
+    /**
+     * Url prefix for redirect and view links of neighbor entity.
+     * @var string
+     */
+    protected $urlPrefixNeighbor = '';
 
     /**
      * Initialize.
@@ -41,7 +48,8 @@ class AdminController extends Controller
      */
     public function beforeAction($action)
     {
-        $this->view->params['urlPrefix'] = $this->urlPrefix;
+        $this->view->params['urlPrefix']         = $this->urlPrefix;
+        $this->view->params['urlPrefixNeighbor'] = $this->urlPrefixNeighbor;
 
         return parent::beforeAction($action);
     }

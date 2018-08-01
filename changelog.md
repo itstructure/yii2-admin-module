@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.6.0 August 1, 2018:**
+- Add ```urlPrefixNeighbor``` parameter in to ```AdminController``` for view links of neighbor entity.
+
 **1.5.1 June 16, 2018:**
 - Move ```urlPrefix``` parameter from ```CommonAdminController``` to ```AdminController``` for redirect and view links.
 
