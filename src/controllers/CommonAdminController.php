@@ -29,12 +29,14 @@ abstract class CommonAdminController extends AdminController
 {
     /**
      * Watch or not created record.
+     *
      * @var bool
      */
     protected $viewCreated = false;
 
     /**
      * Addition fields for the view template.
+     *
      * @var array
      */
     protected $additionFields = [];
@@ -51,51 +53,59 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Installing the multilingual mode.
+     *
      * @var bool
      */
     protected $isMultilanguage = false;
 
     /**
      * Model object record.
+     *
      * @var ModelInterface
      */
     private $model;
 
     /**
      * Search new model object.
+     *
      * @var ActiveRecordInterface
      */
     private $searchModel;
 
     /**
      * Validate component.
+     *
      * @var ValidateComponentInterface
      */
     private $validateComponent;
 
     /**
      * Returns the name of the base model.
+     *
      * @return string
      */
     abstract protected function getModelName():string;
 
     /**
      * Returns the name of the model to search it.
+     *
      * @return string
      */
     abstract protected function getSearchModelName():string;
 
     /**
      * Initialize.
+     *
      * @throws InvalidConfigException
+     *
      * @return void
      */
     public function init()
     {
-        if ($this->isMultilanguage){
+        if ($this->isMultilanguage) {
             $validateComponent = $this->module->get('multilanguage-validate-component');
 
-            if (null === $validateComponent){
+            if (null === $validateComponent) {
                 throw new InvalidConfigException('Multilanguage validate component is not defined.');
             }
             /** @var ValidateComponentInterface $validateComponent */
@@ -107,6 +117,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Set model.
+     *
      * @param $model ModelInterface
      */
     public function setModel(ModelInterface $model): void
@@ -116,6 +127,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Set search model.
+     *
      * @param $model ActiveRecordInterface
      */
     public function setSearchModel(ActiveRecordInterface $model): void
@@ -125,6 +137,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Set validate component for main model.
+     *
      * @param $component ValidateComponentInterface
      */
     public function setValidateComponent(ValidateComponentInterface $component): void
@@ -134,6 +147,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns model.
+     *
      * @return ModelInterface
      */
     public function getModel(): ModelInterface
@@ -143,6 +157,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns search model.
+     *
      * @return ActiveRecordInterface
      */
     public function getSearchModel(): ActiveRecordInterface
@@ -152,6 +167,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Get validate component for main model.
+     *
      * @return ValidateComponentInterface
      */
     public function getValidateComponent(): ValidateComponentInterface
@@ -161,6 +177,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * List of records.
+     *
      * @return string
      */
     public function actionIndex()
@@ -182,7 +199,9 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Displays one model entry.
+     *
      * @param int|string $id
+     *
      * @return mixed
      */
     public function actionView($id)
@@ -200,6 +219,7 @@ abstract class CommonAdminController extends AdminController
     /**
      * Creates a new model record.
      * If the result of creation is successful, there will be a redirect to the 'view' or 'index' page.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -238,7 +258,9 @@ abstract class CommonAdminController extends AdminController
     /**
      * Updates the current model entry.
      * If the result of creation is successful, there will be a redirect to the 'view' or 'index' page.
+     *
      * @param int|string $id
+     *
      * @return string|\yii\web\Response
      */
     public function actionUpdate($id)
@@ -269,8 +291,11 @@ abstract class CommonAdminController extends AdminController
     /**
      * Deletes the current model entry.
      * If the result of the deletion is successful, there will be a redirect to the 'index' page.
+     *
      * @param int|string $id
+     *
      * @return \yii\web\Response
+     *
      * @throws ConflictHttpException
      */
     public function actionDelete($id)
@@ -288,6 +313,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Set addition attributes for model.
+     *
      * @return bool
      */
     protected function setAdditionAttributes(): bool
@@ -299,6 +325,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Get addition fields for the view template.
+     *
      * @return array
      */
     protected function getAdditionFields(): array
@@ -308,6 +335,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns new object of main model.
+     *
      * @return mixed
      */
     protected function getNewModel()
@@ -318,6 +346,7 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns new object of search main model.
+     *
      * @return mixed
      */
     protected function getNewSearchModel()
@@ -329,23 +358,27 @@ abstract class CommonAdminController extends AdminController
     /**
      * Find model record.
      * If the model is not found, a 404 HTTP exception will be displayed.
+     *
      * @param int|string $key
+     *
      * @throws BadRequestHttpException
      * @throws UnknownMethodException
      * @throws NotFoundHttpException
+     *
      * @return mixed
      */
     private function findModel($key)
     {
-        if (null === $key){
+        if (null === $key) {
             throw new BadRequestHttpException('Key parameter is not defined in findModel method.');
         }
 
         $modelObject = $this->getNewModel();
 
-        if (!method_exists($modelObject, 'findOne')){
+        if (!method_exists($modelObject, 'findOne')) {
             $class = (new\ReflectionClass($modelObject));
-            throw new UnknownMethodException('Method findOne does not exists in ' . $class->getNamespaceName() . '\\' . $class->getShortName().' class.');
+            throw new UnknownMethodException('Method findOne does not exists in ' . $class->getNamespaceName() . '\\' .
+                $class->getShortName().' class.');
         }
 
         $result = call_user_func([
@@ -362,14 +395,16 @@ abstract class CommonAdminController extends AdminController
 
     /**
      * Returns an intermediate model for working with the main.
+     *
      * @param int|string|null $key
+     *
      * @return void
      */
     private function setModelByConditions($key = null): void
     {
         $model = null === $key ? $this->getNewModel() : $this->findModel($key);
 
-        if (null === $this->validateComponent){
+        if (null === $this->validateComponent) {
             $this->setModel($model);
         } else {
             $this->setModel(

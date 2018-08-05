@@ -16,6 +16,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
 {
     /**
      * Connect behavior to the basic model.
+     *
      * @return array
      */
     public function behaviors()

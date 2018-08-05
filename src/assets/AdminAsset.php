@@ -1,9 +1,4 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
 namespace Itstructure\AdminModule\assets;
 
@@ -18,11 +13,19 @@ use yii\bootstrap\{BootstrapAsset, BootstrapPluginAsset};
  */
 class AdminAsset extends AssetBundle
 {
+    /**
+     * @var string
+     */
     public $sourcePath = '@vendor/almasaeed2010/adminlte';
+
     /**
      * @var string
      */
     public $skin = '_all-skins';
+
+    /**
+     * @var array
+     */
     public $css = [
         'bower_components/bootstrap/dist/css/bootstrap.min.css',
         'bower_components/font-awesome/css/font-awesome.min.css',
@@ -30,6 +33,10 @@ class AdminAsset extends AssetBundle
         'bower_components/jvectormap/jquery-jvectormap.css',
         'dist/css/AdminLTE.min.css',
     ];
+
+    /**
+     * @var array
+     */
     public $js = [
         'bower_components/fastclick/lib/fastclick.js',
         'dist/js/adminlte.min.js',
@@ -42,10 +49,16 @@ class AdminAsset extends AssetBundle
         // experience a problem displaying the admin menu.
     ];
 
+    /**
+     * @var array
+     */
     public $jsOptions = [
         'position' => \yii\web\View::POS_HEAD
     ];
 
+    /**
+     * @var array
+     */
     public $depends = [
         BootstrapAsset::class,
         JqueryAsset::class,

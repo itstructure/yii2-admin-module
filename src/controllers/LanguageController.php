@@ -27,8 +27,11 @@ class LanguageController extends CommonAdminController
 
     /**
      * Set language as default.
+     *
      * @param $languageId
+     *
      * @return \yii\web\Response
+     *
      * @throws NotFoundHttpException
      */
     public function actionSetDefault($languageId)
@@ -46,6 +49,7 @@ class LanguageController extends CommonAdminController
 
     /**
      * Returns Language model name.
+     *
      * @return string
      */
     protected function getModelName():string
@@ -55,6 +59,7 @@ class LanguageController extends CommonAdminController
 
     /**
      * Returns LanguageSearch model name.
+     *
      * @return string
      */
     protected function getSearchModelName():string

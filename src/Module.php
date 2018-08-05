@@ -24,36 +24,42 @@ class Module extends BaseModule
 {
     /**
      * Main layout for other child templates.
+     *
      * @var string
      */
     public $layout = '@admin/views/layouts/main-admin.php';
 
     /**
      * Login url.
+     *
      * @var null|string|array
      */
     public $loginUrl = null;
 
     /**
      * Set multilanguage mode.
+     *
      * @var bool
      */
     public $isMultilanguage = false;
 
     /**
      * Array of roles to module access.
+     *
      * @var array
      */
     public $accessRoles = ['@'];
 
     /**
      * View component to render content.
+     *
      * @var AdminView
      */
     private $_view = null;
 
     /**
      * Module translations.
+     *
      * @var array|null
      */
     private static $_translations = null;
@@ -86,6 +92,7 @@ class Module extends BaseModule
 
     /**
      * Get the view.
+     *
      * @return AdminView
      */
     public function getView()
@@ -99,6 +106,7 @@ class Module extends BaseModule
 
     /**
      * Returns module root directory.
+     *
      * @return string
      */
     public static function getBaseDir(): string
@@ -108,15 +116,17 @@ class Module extends BaseModule
 
     /**
      * Module translator.
+     *
      * @param       $category
      * @param       $message
      * @param array $params
      * @param null  $language
+     *
      * @return string
      */
     public static function t($category, $message, $params = [], $language = null)
     {
-        if (null === self::$_translations){
+        if (null === self::$_translations) {
             self::registerTranslations();
         }
 
@@ -125,6 +135,7 @@ class Module extends BaseModule
 
     /**
      * Set i18N component.
+     *
      * @return void
      */
     private static function registerTranslations(): void

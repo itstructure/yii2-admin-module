@@ -2,6 +2,7 @@
 
 namespace Itstructure\AdminModule\models;
 
+use yii\db\ActiveRecord as BaseActiveRecord;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use Itstructure\AdminModule\interfaces\ModelInterface;
@@ -11,7 +12,7 @@ use Itstructure\AdminModule\interfaces\ModelInterface;
  * General validation model together with multilingual fields.
  *
  * @property array $dynamicFields Dynamic fields from which the translated fields are formed.
- * @property ActiveRecord|MultilanguageTrait $mainModel Basic data model.
+ * @property BaseActiveRecord|MultilanguageTrait $mainModel Basic data model.
  *
  * @package Itstructure\AdminModule\models
  *
@@ -21,15 +22,17 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 {
     /**
      * Dynamic fields from which the translated fields are formed.
+     *
      * @var array
      */
     public $dynamicFields = [];
 
     /**
      * Basic data model.
-     * @var ActiveRecord|MultilanguageTrait
+     *
+     * @var BaseActiveRecord|MultilanguageTrait
      */
-    public $mainModel;
+    private $mainModel;
 
     /**
      * Scripts Constants.
@@ -40,6 +43,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Validation rules for all fields together with dynamic.
+     *
      * @return array
      */
     public function rules(): array
@@ -52,6 +56,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Scenarios.
+     *
      * @return array
      */
     public function scenarios(): array
@@ -65,6 +70,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Labels of all fields.
+     *
      * @inheritdoc
      */
     public function attributeLabels()
@@ -81,7 +87,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
             $fieldName = $fieldConditions['name'];
 
-            if (array_key_exists($fieldName, $translateAttributeLabels)){
+            if (array_key_exists($fieldName, $translateAttributeLabels)) {
 
                 $staticAttributeLabels[$fieldName] = $translateAttributeLabels[$fieldName];
 
@@ -101,13 +107,38 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     }
 
     /**
+     * Specifies the value of the field.
+     *
+     * @param string $name - name of field.
+     * @param mixed  $value - value to be stored in field.
+     *
+     * @return void
+     */
+    public function __set($name, $value)
+    {
+        $setter = 'set' . $name;
+        if (method_exists($this, $setter)) {
+            $this->$setter($value);
+        } else {
+            $this->{$name} = $value;
+        }
+    }
+
+    /**
      * Gets the value of the field.
+     *
      * @param string $name - field name.
+     *
      * @return mixed
      */
     public function __get($name)
     {
-        if ($this->mainModel->isNewRecord){
+        $getter = 'get' . $name;
+        if (method_exists($this, $getter)) {
+            return $this->$getter();
+        }
+
+        if ($this->mainModel->isNewRecord) {
             return $this->{$name} ?? '';
         } else {
             return $this->mainModel->{$name} ?? '';
@@ -115,18 +146,28 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     }
 
     /**
-     * Specifies the value of the field.
-     * @param string $name - name of field.
-     * @param mixed  $value - value to be stored in field.
-     * @return void
+     * Setter for main model.
+     *
+     * @param BaseActiveRecord $mainModel
      */
-    public function __set($name, $value)
+    public function setMainModel(BaseActiveRecord $mainModel)
     {
-        $this->{$name} = $value;
+        $this->mainModel = $mainModel;
+    }
+
+    /**
+     * Getter for main model.
+     *
+     * @return mixed
+     */
+    public function getMainModel()
+    {
+        return $this->mainModel;
     }
 
     /**
      * Attributes along with dynamic and from the basic model.
+     *
      * @return array
      */
     public function attributes(): array
@@ -139,11 +180,12 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Saves data in the main model.
+     *
      * @return bool
      */
     public function save(): bool
     {
-        if ($this->mainModel->isNewRecord){
+        if ($this->mainModel->isNewRecord) {
             $this->setScenario(self::SCENARIO_CREATE);
         } else {
             $this->setScenario(self::SCENARIO_UPDATE);
@@ -164,6 +206,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns the id of the current model.
+     *
      * @return int
      */
     public function getId()
@@ -173,6 +216,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns an array of all multilanguage attributes.
+     *
      * @return array
      */
     private function getDynamicAttributes(): array
@@ -189,6 +233,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Creates validation rules for dynamic fields for all languages.
+     *
      * @return array
      */
     private function getDynamicValidationRules(): array
@@ -202,19 +247,23 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
                 foreach ($fieldRules as $fieldRule) {
 
-                    if (in_array('required', $fieldRule) && $language != Language::getDefaultLanguage()->shortName){
+                    if (in_array('required', $fieldRule) && $language != Language::getDefaultLanguage()->shortName) {
                         continue;
                     }
 
-                    if (in_array('unique', $fieldRule)){
+                    if (in_array('unique', $fieldRule)) {
                         $fieldRule = ArrayHelper::merge(
                             $fieldRule,
                             [
                                 'skipOnError'     => true,
                                 'targetClass'     => $this->mainModel->getTranslateModelName(),
                                 'targetAttribute' => [$fieldName . '_' . $language => $fieldName],
-                                'filter' => $this->getScenario() == self::SCENARIO_UPDATE ? $this->mainModel->getKeyToMainModel().' != '.$this->id : '',
-                                'message' => isset($fieldRule['message']) ? $fieldRule['message'] : 'Record with such attribute "{attribute}" already exists'
+
+                                'filter' => $this->getScenario() == self::SCENARIO_UPDATE ?
+                                    $this->mainModel->getKeyToMainModel().' != '.$this->id : '',
+
+                                'message' => isset($fieldRule['message']) ?
+                                    $fieldRule['message'] : 'Record with such attribute "{attribute}" already exists'
                             ]
                         );
                     }
@@ -232,6 +281,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
 
     /**
      * Returns the list of available languages in the short name format.
+     *
      * @return array
      */
     private function getShortLanguageList(): array

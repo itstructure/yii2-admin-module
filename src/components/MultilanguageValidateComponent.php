@@ -26,21 +26,25 @@ class MultilanguageValidateComponent extends Component implements ValidateCompon
 {
     /**
      * Array of models with multilanguage fields.
+     *
      * @var array
      */
     public $models = [];
 
     /**
      * Sets a specific model for the general validation model.
+     *
      * @param ActiveRecordInterface $mainModel
+     *
      * @throws InvalidConfigException
+     *
      * @return ModelInterface
      */
     public function setModel(ActiveRecordInterface $mainModel): ModelInterface
     {
         $config = $this->models[$mainModel::tableName()];
 
-        if (!is_array($config['dynamicFields'])){
+        if (!is_array($config['dynamicFields'])) {
             throw new InvalidConfigException('No dynamic fields are specified.');
         }
 

@@ -19,6 +19,7 @@ class MainMenu extends Widget
 {
     /**
      * Main menu item config.
+     *
      * @var MainMenuItem[]
      */
     protected $menuItems = [];
@@ -33,7 +34,9 @@ class MainMenu extends Widget
 
     /**
      * Main menu items setter.
+     *
      * @param array|MainMenuItem[] $menuItems menu items config.
+     *
      * @return $this
      */
     public function setMenuItems(array $menuItems)
@@ -47,7 +50,9 @@ class MainMenu extends Widget
 
     /**
      * Create a MenuItem instance and fill menu items array.
+     *
      * @param array|MainMenuItem $item
+     *
      * @return void
      */
     public function addMenuItem($item)
@@ -63,6 +68,7 @@ class MainMenu extends Widget
 
     /**
      * Returns main menu template with rendered menu items.
+     *
      * @return string.
      */
     public function run()

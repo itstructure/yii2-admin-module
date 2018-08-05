@@ -20,12 +20,14 @@ trait MultilanguageTrait
 {
     /**
      * Container for temporary storage of translation data.
+     *
      * @var array
      */
     private $storage = [];
 
     /**
      * Return key name of relation between main table and translations table.
+     *
      * @return string
      */
     public static function getKeyToMainModel()
@@ -35,6 +37,7 @@ trait MultilanguageTrait
 
     /**
      * Return translations table name.
+     *
      * @return string
      */
     public static function getTranslateTablelName()
@@ -44,16 +47,19 @@ trait MultilanguageTrait
 
     /**
      * Return related translate model name.
+     *
      * @return string
      */
     public static function getTranslateModelName()
     {
         $class = new \ReflectionClass(static::class);
-        return $class->getNamespaceName() . '\\' . $class->getShortName() . ucfirst(MultilanguageMigration::TRANSLATE_TABLE_POSTFIX);
+        return $class->getNamespaceName() . '\\' . $class->getShortName() .
+            ucfirst(MultilanguageMigration::TRANSLATE_TABLE_POSTFIX);
     }
 
     /**
      * Return related translated records.
+     *
      * @return ActiveQuery
      */
     public function getTranslateList()
@@ -66,7 +72,9 @@ trait MultilanguageTrait
     /**
      * Override model magic getter. Return translate for field.
      * Example: if we try $model->title_en, we will get 'title' in english.
+     *
      * @param string $name field name.
+     *
      * @return mixed|null
      */
     public function __get($name)
@@ -92,8 +100,10 @@ trait MultilanguageTrait
      * Override model magic setter. Set translation for the field.
      * For example $model->title_en  will save title field in translate model where
      * language_id => record in language with 'en' locale.
+     *
      * @param string $name  name of field.
      * @param mixed  $value value to be stored in field.
+     *
      * @return void
      */
     public function __set($name, $value)
@@ -112,6 +122,7 @@ trait MultilanguageTrait
 
     /**
      * Override model method to save all translations after main model saved.
+     *
      * @return void
      */
     public function afterSave($insert, $changedAttributes)
@@ -132,7 +143,9 @@ trait MultilanguageTrait
     /**
      * Returns default translate. If field name is given, we can take an alternative
      * translate when default translate value is empty.
+     *
      * @param string $field
+     *
      * @return mixed
      */
     public function getDefaultTranslate($field = null)
@@ -149,7 +162,10 @@ trait MultilanguageTrait
             ])->id
         ]);
 
-        if ($field !== null && $defaultTranslate->andWhere(['!=', $field, ''])->count() == 0){
+        if ($field !== null &&
+            $defaultTranslate->andWhere([
+                '!=', $field, ''
+            ])->count() == 0) {
 
             $result = $mainRequest->where([
                 '!=', $field, ''
@@ -163,7 +179,9 @@ trait MultilanguageTrait
 
     /**
      * Check for multi-language mode of field.
+     *
      * @param string $name name of field to be checked.
+     *
      * @return boolean
      */
     private function isMultiLanguageField($name): bool
@@ -188,12 +206,16 @@ trait MultilanguageTrait
 
     /**
      * Find or create related model with translates.
+     *
      * @param string $lang language short name.
+     *
      * @return mixed
      */
     private function findOrCreateTranslateModel($lang)
     {
-        $language = Language::findOne(['shortName' => $lang]);
+        $language = Language::findOne([
+            'shortName' => $lang
+        ]);
 
         $translateModel = call_user_func([
             static::getTranslateModelName(),

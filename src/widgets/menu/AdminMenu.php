@@ -22,12 +22,14 @@ class AdminMenu extends Widget
 {
     /**
      * Link to user profile.
+     *
      * @var string
      */
     public $profileLink = '/profile';
 
     /**
      * Link to sign-out action.
+     *
      * @var string
      */
     public $signOutLink = '/sign-out';
@@ -35,18 +37,21 @@ class AdminMenu extends Widget
     /**
      * This array contain a key->value pairs where key - is link name and value is link
      * that will be rendered in "user-body" section of menu.
+     *
      * @var string[]
      */
     public $userBody = [];
 
     /**
      * User model.
+     *
      * @var AdminMenuInterface
      */
     private $user;
 
     /**
      * Setter for the User model.
+     *
      * @param AdminMenuInterface $user
      */
     public function setUser(AdminMenuInterface $user)

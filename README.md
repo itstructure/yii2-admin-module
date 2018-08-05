@@ -28,12 +28,12 @@ Yii2 Admin module
 
 Via composer:
 
-```composer require "itstructure/yii2-admin-module": "^1.6.0"```
+```composer require "itstructure/yii2-admin-module": "^1.6.1"```
 
 or in section **require** of composer.json file set the following:
 ```
 "require": {
-    "itstructure/yii2-admin-module": "^1.6.0"
+    "itstructure/yii2-admin-module": "^1.6.1"
 }
 ```
 and command ```composer install```, if you install yii2 project extensions first,

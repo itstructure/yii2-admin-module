@@ -15,7 +15,9 @@ interface ValidateComponentInterface
 {
     /**
      * Search model data.
+     *
      * @param $model ActiveRecordInterface
+     *
      * @return ModelInterface
      */
     public function setModel(ActiveRecordInterface $model): ModelInterface;

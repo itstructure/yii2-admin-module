@@ -23,18 +23,21 @@ class AdminController extends Controller
 {
     /**
      * Url prefix for redirect and view links.
+     *
      * @var string
      */
     protected $urlPrefix = '';
 
     /**
      * Url prefix for redirect and view links of neighbor entity.
+     *
      * @var string
      */
     protected $urlPrefixNeighbor = '';
 
     /**
      * Initialize.
+     *
      * @return void
      */
     public function init()
@@ -44,6 +47,7 @@ class AdminController extends Controller
 
     /**
      * @param \yii\base\Action $action
+     *
      * @return bool
      */
     public function beforeAction($action)
@@ -82,6 +86,7 @@ class AdminController extends Controller
 
     /**
      * Give ability of configure view to the module class.
+     *
      * @return \yii\base\View|\yii\web\View
      */
     public function getView()

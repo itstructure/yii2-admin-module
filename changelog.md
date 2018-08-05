@@ -1,5 +1,9 @@
 ### CHANGE LOG:
 
+**1.6.1 August 5, 2018:**
+- Code fixes according with the PSR standards.
+- Add setter and getter for **mainModel** in ```MultilanguageValidateModel```.
+
 **1.6.0 August 1, 2018:**
 - Add ```urlPrefixNeighbor``` parameter in to ```AdminController``` for view links of neighbor entity.
 
