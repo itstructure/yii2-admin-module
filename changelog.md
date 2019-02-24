@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.6.2 February 24, 2019:**
+- in ```MultilanguageValidateModel``` class the **mainModelAttributes()** method checking is added to check its presence in main model.
+
 **1.6.1 August 5, 2018:**
 - Code fixes according with the PSR standards.
 - Add setter and getter for **mainModel** in ```MultilanguageValidateModel```.

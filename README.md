@@ -526,6 +526,11 @@ multilanguage data in application config, like in example:
     ]
     ```
 
+**Useful feature:**
+
+After release 1.6.2 in ```MultilanguageValidateModel``` class the **mainModelAttributes()** method checking is added to check its presence in main model.
+This may be necessary when you need to validate fields that are not in the database table. These fields can be set in this method, in addition to the main fields. The method must return an array.
+
 License
 ----------------------------
 

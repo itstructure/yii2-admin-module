@@ -172,9 +172,18 @@ class MultilanguageValidateModel extends Model implements ModelInterface
      */
     public function attributes(): array
     {
+        if (method_exists($this->mainModel, 'mainModelAttributes')) {
+            $mainModelAttributes = call_user_func([
+                $this->mainModel,
+                'mainModelAttributes'
+            ]);
+        } else {
+            $mainModelAttributes = $this->mainModel->attributes();
+        }
+
         return ArrayHelper::merge(
             $this->getDynamicAttributes(),
-            $this->mainModel->attributes()
+            $mainModelAttributes
         );
     }
 
