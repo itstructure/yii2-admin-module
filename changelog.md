@@ -1,5 +1,9 @@
 ### CHANGE LOG:
 
+**1.6.3 April 21, 2019:**
+- in ```LanguageController``` bug fix for **actionSetDefault()** method: ```$language->default = $language->default == 0 ? 1 : 0```.
+- Fixes for Readme file.
+
 **1.6.2 February 24, 2019:**
 - in ```MultilanguageValidateModel``` class the **mainModelAttributes()** method checking is added to check its presence in main model.
 

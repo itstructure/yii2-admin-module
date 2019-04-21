@@ -41,7 +41,7 @@ class LanguageController extends CommonAdminController
             throw  new NotFoundHttpException('Language with id ' . $languageId . ' does not exist');
         }
 
-        $language->default = !$language->default;
+        $language->default = $language->default == 0 ? 1 : 0;
         $language->save();
 
         return $this->redirect('index');
