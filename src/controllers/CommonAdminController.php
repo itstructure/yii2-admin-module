@@ -367,7 +367,7 @@ abstract class CommonAdminController extends AdminController
      *
      * @return mixed
      */
-    private function findModel($key)
+    protected function findModel($key)
     {
         if (null === $key) {
             throw new BadRequestHttpException('Key parameter is not defined in findModel method.');

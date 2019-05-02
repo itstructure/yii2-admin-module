@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.6.4 May 2, 2019:**
+- Set **protected** type for function ```findModel($key)``` in ```CommonAdminController```.
+
 **1.6.3 April 21, 2019:**
 - in ```LanguageController``` bug fix for **actionSetDefault()** method: ```$language->default = $language->default == 0 ? 1 : 0```.
 - Fixes for Readme file.
