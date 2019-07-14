@@ -28,12 +28,12 @@ Yii2 Admin module
 
 Via composer:
 
-```composer require itstructure/yii2-admin-module ^1.6.4```
+```composer require itstructure/yii2-admin-module ^1.7.0```
 
 or in section **require** of composer.json file set the following:
 ```
 "require": {
-    "itstructure/yii2-admin-module": "^1.6.4"
+    "itstructure/yii2-admin-module": "^1.7.0"
 }
 ```
 and command ```composer install```, if you install yii2 project extensions first,
@@ -534,6 +534,6 @@ This may be necessary when you need to validate fields that are not in the datab
 License
 ----------------------------
 
-Copyright © 2018 Andrey Girnik girnikandrey@gmail.com.
+Copyright © 2019 Andrey Girnik girnikandrey@gmail.com.
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT). See LICENSE.txt for details.

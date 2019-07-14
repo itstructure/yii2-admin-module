@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.7.0 July 15, 2019:**
+- Move scenarios constants to ```ModelInterface```. Set scenarios for main model in ```CommonAdminController``` (update, create).
+
 **1.6.4 May 2, 2019:**
 - Set **protected** type for function ```findModel($key)``` in ```CommonAdminController```.
 

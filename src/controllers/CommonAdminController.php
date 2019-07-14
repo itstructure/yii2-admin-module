@@ -3,7 +3,7 @@
 namespace Itstructure\AdminModule\controllers;
 
 use Yii;
-use yii\db\ActiveRecordInterface;
+use yii\db\BaseActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\base\{UnknownMethodException, InvalidConfigException};
 use yii\web\{IdentityInterface, ConflictHttpException, BadRequestHttpException, NotFoundHttpException};
@@ -18,7 +18,7 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * @property array $additionAttributes Addition attributes with values for the model.
  * @property bool $isMultilanguage Installing the multilingual mode.
  * @property ModelInterface $model Model object record.
- * @property ActiveRecordInterface $searchModel Search new model object.
+ * @property BaseActiveRecord $searchModel Search new model object.
  * @property ValidateComponentInterface $validateComponent Validate component.
  *
  * @package Itstructure\AdminModule\controllers
@@ -68,7 +68,7 @@ abstract class CommonAdminController extends AdminController
     /**
      * Search new model object.
      *
-     * @var ActiveRecordInterface
+     * @var BaseActiveRecord
      */
     private $searchModel;
 
@@ -128,9 +128,9 @@ abstract class CommonAdminController extends AdminController
     /**
      * Set search model.
      *
-     * @param $model ActiveRecordInterface
+     * @param $model BaseActiveRecord
      */
-    public function setSearchModel(ActiveRecordInterface $model): void
+    public function setSearchModel(BaseActiveRecord $model): void
     {
         $this->searchModel = $model;
     }
@@ -158,9 +158,9 @@ abstract class CommonAdminController extends AdminController
     /**
      * Returns search model.
      *
-     * @return ActiveRecordInterface
+     * @return BaseActiveRecord
      */
-    public function getSearchModel(): ActiveRecordInterface
+    public function getSearchModel(): BaseActiveRecord
     {
         return $this->searchModel;
     }
@@ -403,6 +403,11 @@ abstract class CommonAdminController extends AdminController
     private function setModelByConditions($key = null): void
     {
         $model = null === $key ? $this->getNewModel() : $this->findModel($key);
+
+        if ($model instanceof BaseActiveRecord) {
+            $scenario = $model->getIsNewRecord() ? ModelInterface::SCENARIO_CREATE : ModelInterface::SCENARIO_UPDATE;
+            $model->setScenario($scenario);
+        }
 
         if (null === $this->validateComponent) {
             $this->setModel($model);

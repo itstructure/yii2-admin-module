@@ -35,13 +35,6 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     private $mainModel;
 
     /**
-     * Scripts Constants.
-     * Required for certain validation rules to work for specific scenarios.
-     */
-    const SCENARIO_CREATE = 'create';
-    const SCENARIO_UPDATE = 'update';
-
-    /**
      * Validation rules for all fields together with dynamic.
      *
      * @return array
@@ -62,8 +55,8 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     public function scenarios(): array
     {
         return [
-            self::SCENARIO_CREATE => $this->attributes(),
-            self::SCENARIO_UPDATE => $this->attributes(),
+            ModelInterface::SCENARIO_CREATE => $this->attributes(),
+            ModelInterface::SCENARIO_UPDATE => $this->attributes(),
             self::SCENARIO_DEFAULT => $this->attributes(),
         ];
     }
@@ -195,9 +188,9 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     public function save(): bool
     {
         if ($this->mainModel->isNewRecord) {
-            $this->setScenario(self::SCENARIO_CREATE);
+            $this->setScenario(ModelInterface::SCENARIO_CREATE);
         } else {
-            $this->setScenario(self::SCENARIO_UPDATE);
+            $this->setScenario(ModelInterface::SCENARIO_UPDATE);
         }
 
         if (!$this->validate()){
@@ -268,7 +261,7 @@ class MultilanguageValidateModel extends Model implements ModelInterface
                                 'targetClass'     => $this->mainModel->getTranslateModelName(),
                                 'targetAttribute' => [$fieldName . '_' . $language => $fieldName],
 
-                                'filter' => $this->getScenario() == self::SCENARIO_UPDATE ?
+                                'filter' => $this->getScenario() == ModelInterface::SCENARIO_UPDATE ?
                                     $this->mainModel->getKeyToMainModel().' != '.$this->id : '',
 
                                 'message' => isset($fieldRule['message']) ?

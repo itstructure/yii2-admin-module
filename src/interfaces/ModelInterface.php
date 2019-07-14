@@ -12,6 +12,13 @@ namespace Itstructure\AdminModule\interfaces;
 interface ModelInterface
 {
     /**
+     * Scripts Constants.
+     * Required for certain validation rules to work for specific scenarios.
+     */
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+
+    /**
      * Save data.
      *
      * @return bool
