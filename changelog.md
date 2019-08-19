@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.7.1 August 19, 2019:**
+- Upgrade of the copyright time and add a personal site link.
+
 **1.7.0 July 15, 2019:**
 - Move scenarios constants to ```ModelInterface```. Set scenarios for main model in ```CommonAdminController``` (update, create).
 
