@@ -16,6 +16,21 @@ Yii2 Admin module
 - Work in multilanguage mode for content
 - Work in multilanguage mode for dashboard
 
+Module functional block scheme:
+
+![Admin module scheme](admin_module_scheme.jpg)
+
+Note!!!
+
+As this module gives you a freedom in the architecture of your application child classes, pay attention:
+- There are no the next specific entity model classes, which are as examples in documentation: ```Catalog```, ```CatalogLanguage``` - you have to create them personally in your application.
+- There are no the next specific controller class, which is as example in documentation: ```CatalogController``` - you have to create it personally in your application.
+- There are not routes - you have to create that according with your application controller map.
+
+Base project example, which uses this admin module for multilanguage content and dashboard: [yii2-template-multilanguage](https://github.com/itstructure/yii2-template-multilanguage).
+
+Base project example, which uses this admin module for simple data: [yii2-template-simple](https://github.com/itstructure/yii2-template-simple).
+
 Addition module description you can see in my [Personal site](https://pack-develop.info/en/product/5).
 
 2 Dependencies
@@ -30,12 +45,12 @@ Addition module description you can see in my [Personal site](https://pack-devel
 
 Via composer:
 
-```composer require itstructure/yii2-admin-module ^1.7.1```
+```composer require itstructure/yii2-admin-module ^1.7.2```
 
 or in section **require** of composer.json file set the following:
 ```
 "require": {
-    "itstructure/yii2-admin-module": "^1.7.1"
+    "itstructure/yii2-admin-module": "^1.7.2"
 }
 ```
 and command ```composer install```, if you install yii2 project extensions first,

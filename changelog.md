@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.7.2 December 25, 2019:**
+- Documentation upgrade. Set functional block diagram.
+
 **1.7.1 August 19, 2019:**
 - Upgrade of the copyright time and add a personal site link.
 
