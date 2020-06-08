@@ -31,7 +31,7 @@ Base project example, which uses this admin module for multilanguage content and
 
 Base project example, which uses this admin module for simple data: [yii2-template-simple](https://github.com/itstructure/yii2-template-simple).
 
-Addition module description you can see in my [Personal site](https://pack-develop.info/en/product/5).
+Addition module description you can see in my [Personal site](https://pack-develop.info/en/product/yii2-admin-module).
 
 2 Dependencies
 ----------------------------
@@ -551,6 +551,6 @@ This may be necessary when you need to validate fields that are not in the datab
 License
 ----------------------------
 
-Copyright © 2018-2019 Andrey Girnik girnikandrey@gmail.com.
+Copyright © 2018-2020 Andrey Girnik girnikandrey@gmail.com.
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT). See LICENSE.txt for details.

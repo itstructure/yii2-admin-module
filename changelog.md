@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.7.3 June 9, 2020:**
+- Documentation upgrade. Change link to personal site.
+
 **1.7.2 December 25, 2019:**
 - Documentation upgrade. Set functional block diagram.
 
