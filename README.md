@@ -45,12 +45,12 @@ Addition module description you can see in my [Personal site](https://pack-devel
 
 Via composer:
 
-```composer require itstructure/yii2-admin-module ^1.7.2```
+```composer require itstructure/yii2-admin-module ~1.7.4```
 
 or in section **require** of composer.json file set the following:
 ```
 "require": {
-    "itstructure/yii2-admin-module": "^1.7.2"
+    "itstructure/yii2-admin-module": "~1.7.4"
 }
 ```
 and command ```composer install```, if you install yii2 project extensions first,

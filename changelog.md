@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.7.4 June 12, 2020:**
+- Bug fix, add scenarios to ActiveRecord internal class.
+
 **1.7.3 June 9, 2020:**
 - Documentation upgrade. Change link to personal site.
 
