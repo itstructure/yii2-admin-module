@@ -22,6 +22,8 @@ class LanguageController extends CommonAdminController
     {
         $this->viewPath = '@admin/views/language';
 
+        $this->setEditingScenarios = true;
+
         parent::init();
     }
 

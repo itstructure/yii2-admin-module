@@ -17,6 +17,7 @@ use Itstructure\AdminModule\interfaces\{ModelInterface, ValidateComponentInterfa
  * @property array $additionFields Addition fields for the view template.
  * @property array $additionAttributes Addition attributes with values for the model.
  * @property bool $isMultilanguage Installing the multilingual mode.
+ * @property bool $setEditingScenarios If it is true, scenarios 'create' and 'update' will be set automatically for app model extending from ActiveRecord.
  * @property ModelInterface $model Model object record.
  * @property BaseActiveRecord $searchModel Search new model object.
  * @property ValidateComponentInterface $validateComponent Validate component.
@@ -57,6 +58,13 @@ abstract class CommonAdminController extends AdminController
      * @var bool
      */
     protected $isMultilanguage = false;
+
+    /**
+     * If it is true, scenarios 'create' and 'update' will be set automatically for app model extending from ActiveRecord.
+     *
+     * @var bool
+     */
+    protected $setEditingScenarios = false;
 
     /**
      * Model object record.
@@ -404,7 +412,7 @@ abstract class CommonAdminController extends AdminController
     {
         $model = null === $key ? $this->getNewModel() : $this->findModel($key);
 
-        if ($model instanceof BaseActiveRecord) {
+        if ($this->setEditingScenarios && $model instanceof BaseActiveRecord) {
             $scenario = $model->getIsNewRecord() ? ModelInterface::SCENARIO_CREATE : ModelInterface::SCENARIO_UPDATE;
             $model->setScenario($scenario);
         }

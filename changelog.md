@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.0 June 15, 2020:**
+- Added new boolean ```$setEditingScenarios``` attribute to ```CommonAdminController```. If it is true, scenarios **create** and **update** will be set automatically for app model extended from an ActiveRecord.
+
 **1.7.4 June 12, 2020:**
 - Bug fix, add scenarios to ActiveRecord internal class.
 

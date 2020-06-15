@@ -71,6 +71,27 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
                 'string',
                 'max' => 64,
             ],
+            [
+                'locale',
+                'unique',
+                'skipOnError'   => true,
+                'targetClass'   => static::class,
+                'filter'        => $this->getScenario() == self::SCENARIO_UPDATE ? 'id != '.$this->id : ''
+            ],
+            [
+                'shortName',
+                'unique',
+                'skipOnError'   => true,
+                'targetClass'   => static::class,
+                'filter'        => $this->getScenario() == self::SCENARIO_UPDATE ? 'id != '.$this->id : ''
+            ],
+            [
+                'name',
+                'unique',
+                'skipOnError'   => true,
+                'targetClass'   => static::class,
+                'filter'        => $this->getScenario() == self::SCENARIO_UPDATE ? 'id != '.$this->id : ''
+            ],
         ];
     }
 
