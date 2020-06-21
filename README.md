@@ -1,5 +1,4 @@
-Yii2 Admin module
-==============
+# Yii2 Admin module
 
 [![Latest Stable Version](https://poser.pugx.org/itstructure/yii2-admin-module/v/stable)](https://packagist.org/packages/itstructure/yii2-admin-module)
 [![Latest Unstable Version](https://poser.pugx.org/itstructure/yii2-admin-module/v/unstable)](https://packagist.org/packages/itstructure/yii2-admin-module)
@@ -8,8 +7,7 @@ Yii2 Admin module
 [![Build Status](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/badges/build.png?b=master)](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/itstructure/yii2-admin-module/?branch=master)
 
-1 Introduction
-----------------------------
+## Introduction
 
 **Yii2AdminModule** -- Module for the Yii2 framework with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) template, which provides the following options:
 - Use this module as base administrator dashboard to manage site content with the ability to extend it by children application CRUD's
@@ -18,13 +16,13 @@ Yii2 Admin module
 
 Module functional block scheme:
 
-![Admin module scheme](admin_module_scheme.jpg)
+![Admin module scheme](https://github.com/itstructure/yii2-admin-module/blob/master/admin_module_scheme.jpg)
 
 Note!!!
 
 As this module gives you a freedom in the architecture of your application child classes, pay attention:
-- There are no the next specific entity model classes, which are as examples in documentation: ```Catalog```, ```CatalogLanguage``` - you have to create them personally in your application.
-- There are no the next specific controller class, which is as example in documentation: ```CatalogController``` - you have to create it personally in your application.
+- There are no the next specific entity model classes, which are as examples in documentation: `Catalog`, `CatalogLanguage` - you have to create them personally in your application.
+- There are no the next specific controller class, which is as example in documentation: `CatalogController` - you have to create it personally in your application.
 - There are not routes - you have to create that according with your application controller map.
 
 Base project example, which uses this admin module for multilanguage content and dashboard: [yii2-template-multilanguage](https://github.com/itstructure/yii2-template-multilanguage).
@@ -33,43 +31,42 @@ Base project example, which uses this admin module for simple data: [yii2-templa
 
 Addition module description you can see in my [Personal site](https://pack-develop.info/en/product/yii2-admin-module).
 
-2 Dependencies
-----------------------------
+## Dependencies
 
 - php >= 7.1
 - composer
 
-3 Installation
-----------------------------
+## Installation
 
 Via composer:
 
-```composer require itstructure/yii2-admin-module ~1.8.0```
+`composer require itstructure/yii2-admin-module ~1.8.1`
 
 or in section **require** of composer.json file set the following:
-```
+
+```json
 "require": {
-    "itstructure/yii2-admin-module": "~1.8.0"
+    "itstructure/yii2-admin-module": "~1.8.1"
 }
 ```
-and command ```composer install```, if you install yii2 project extensions first,
 
-or command ```composer update```, if all yii2 project extensions are already installed.
+and command `composer install`, if you install yii2 project extensions first,
 
-4 Usage
-----------------------------
+or command `composer update`, if all yii2 project extensions are already installed.
 
-### 4.1 Main properties
+## Usage
 
-The **name** of module: ```admin```
+### Main properties
 
-The **namespace** for used classes: ```Itstructure\AdminModule```.
+The **name** of module: `admin`
 
-The **alias** to access in to module root directory: ```@admin```.
+The **namespace** for used classes: `Itstructure\AdminModule`.
 
-The main module template **layout** is in: ```@admin/views/layouts/main-admin.php```.
+The **alias** to access in to module root directory: `@admin`.
 
-### 4.2 Application config
+The main module template **layout** is in: `@admin/views/layouts/main-admin.php`.
+
+### Application config
 
 Base application config must be like in example below:
 
@@ -99,18 +96,20 @@ use Itstructure\AdminModule\components\AdminView;
     ],
 ],
 ```
+
 Here,
 
-```viewPath``` - view template location for CRUDs, which you will create in application.
+`viewPath` - view template location for CRUDs, which you will create in application.
 
-```CatalogController``` - example controller.
+`CatalogController` - example controller.
 
-```accessRoles``` - an array of roles, that are allowed to access. Bu default ['@'].
+`accessRoles` - an array of roles, that are allowed to access. Bu default `['@']`.
 
-in ```components``` the ```view``` component contains required parameter ```class```.
-Such parameters as ```skin```, ```bodyLayout``` - dashboard style, can be set custom.
+in `components` the `view` component contains required parameter `class`.
+Such parameters as `skin`, `bodyLayout` - dashboard style, can be set custom.
 
-Parameter ```mainMenuConfig``` - is the sidebar admin menu, which must be an array:
+Parameter `mainMenuConfig` - is the sidebar admin menu, which must be an array:
+
 ```php
 [
     'menuItems' => [
@@ -135,7 +134,7 @@ Parameter ```mainMenuConfig``` - is the sidebar admin menu, which must be an arr
 ]
 ```
 
-Parameter ```extraAssets``` - extra assets, can be like in examples:
+Parameter `extraAssets` - extra assets, can be like in examples:
 
 - Like a class names
 
@@ -145,7 +144,7 @@ Parameter ```extraAssets``` - extra assets, can be like in examples:
         SecondExtraAsset::class,
     ]
     ```
-
+    
 - Or like an array config
 
     ```php
@@ -159,54 +158,54 @@ Parameter ```extraAssets``` - extra assets, can be like in examples:
     ]
     ```
 
-### 4.3 Base controllers
+### Base controllers
 
 In **Yii2AdminModule** there are two controllers, which can be used by child application 
 controllers:
 
-- ```AdminController```
+- `AdminController`
 
     When using this controller, a class AdminView will be loaded with its assets. This is done 
     using getView() method, which in turn is taken from **module** class with getting the 
     **view** component. 
 
-- ```CommonAdminController```
+- `CommonAdminController`
 
-    This controller extends ```AdminController```.
+    This controller extends `AdminController`.
     There are already created universal basic methods for child application controllers:
-    - actionIndex();
-    - actionView($id);
-    - actionCreate();
-    - actionUpdate($id);
-    - actionDelete($id);
+    - `actionIndex()`;
+    - `actionView($id)`;
+    - `actionCreate()`;
+    - `actionUpdate($id)`;
+    - `actionDelete($id)`;
     
     In order for the child application controller to work with the CommonAdminController, it is 
     necessary to define the functions in child controller:
-    - getModelName(); Sets the name of main model class.
-    - getSearchModelName(); - Sets the name of main search model class.
+    - `getModelName()`; Sets the name of main model class.
+    - `getSearchModelName()`; - Sets the name of main search model class.
     
     In CommonAdminController there are the next interesting options:
-    - ```viewCreated``` - to view the record after it's creation instead all record list.
-    - ```additionFields``` - array of addition fields with heir values for the view template.
-    - ```additionAttributes``` - array of addition attributes with their values for current 
+    - `viewCreated` - to view the record after it's creation instead all record list.
+    - `additionFields` - array of addition fields with heir values for the view template.
+    - `additionAttributes` - array of addition attributes with their values for current 
     model, which can be set in model except for those that are sent from the form.
     Example: information about the uploaded file, which was uploaded separate from the main send from the form.
 
-### 4.4 Integrated controllers
+### Integrated controllers
 
 In **Yii2AdminModule** there is one integrated controller:
 
-- ```LanguageController``` - to manage just languages for application data.
+- `LanguageController` - to manage just languages for application data.
 
-### 4.5 Multilanguage mode for dashboard tools
+### Multilanguage mode for dashboard tools
 
-Multilanguage mode just for dashboard you can set by ```language``` parameter in app configuration: ```en-US```, ```ru-RU``` e.t.c.
+Multilanguage mode just for dashboard you can set by `language` parameter in app configuration: `en-US`, `ru-RU` e.t.c.
 
-### 4.6 Multilanguage mode for data
+### Multilanguage mode for data
 
 There is an opportunity to set modes by application configuration, using parameter:
 
-- ```isMultilanguage``` - work in multilanguage mode just for content.
+- `isMultilanguage` - work in multilanguage mode just for content.
 
     When **true**, the sidebar link "Languages" in main menu will appear automatically.
 
@@ -263,10 +262,9 @@ process.
 
 **To use this mode it's necessary:**
 
-1. Set module parameter ```isMultilanguage``` on **true** in application config section **mdules**
- -> **admin**.
+1. Set module parameter `isMultilanguage` on **true** in application config section **mdules** -> **admin**.
 
-2. Apply module migration: ```migrations/multilanguage/m171202_104405_create_language_table```
+2. Apply module migration: `migrations/multilanguage/m171202_104405_create_language_table`
 
     For that make next, **if not already done**:
     
@@ -275,6 +273,7 @@ process.
         ```php
         use Itstructure\AdminModule\Module;
         ```
+        
         ```php
         'modules' => [
             'admin' => [
@@ -309,32 +308,27 @@ process.
         
     - Run command in console:
     
-        ```
-        yii migrate --migrationPath=@admin/migrations/multilanguage
-        ```
+        `yii migrate --migrationPath=@admin/migrations/multilanguage`
         
     - Check if the sidebar link to manage languages is appeared.
     
 3. Application migrations must be extended from 
-```Itstructure\AdminModule\components\MultilanguageMigration```
+`Itstructure\AdminModule\components\MultilanguageMigration`
 
     It's necessary to automatically creation main table and translate table.
 
 4. Data base tables will have a structure, like in example:
 
-    ```Main table "catalog"```
+    `Main table "catalog"`
     
-    ```php
         | id | order |      created_at     |      updated_at     |
         |----|-------|---------------------|---------------------|
         | 1  |   2   | 2018-01-14 18:06:33 | 2018-01-14 18:06:33 |
         | 2  |   1   | 2018-01-14 18:10:00 | 2018-01-14 18:10:00 |
         | 3  |   3   | 2018-01-14 19:05:15 | 2018-01-14 19:05:15 |
-    ```
 
-    ```Translate table "catalog_language"```
+    `Translate table "catalog_language"`
 
-    ```php
         | catalog_id | language_id |   title   |      description     |      created_at     |      updated_at     |
         |------------|-------------|-----------|----------------------|---------------------|---------------------|
         |      1     |      1      | Catalog 1 |     Description 1    | 2018-01-14 18:06:33 | 2018-01-14 18:06:33 |
@@ -342,16 +336,13 @@ process.
         |      2     |      1      | Catalog 2 |     Description 2    | 2018-01-14 18:10:00 | 2018-01-14 18:10:00 |
         |      3     |      1      | Catalog 3 |     Description 3    | 2018-01-14 19:05:15 | 2018-01-14 19:05:15 |
         |      3     |      2      | Каталог 3 |     Описание 3       | 2018-01-14 19:05:15 | 2018-01-14 19:05:15 |
-    ```
 
-    ```Language table "language"```
+    `Language table "language"`
 
-    ```php
         | id | locale | shortName |  name   | default |      created_at     |      updated_at     |
         |----|--------|-----------|---------|---------|---------------------|---------------------|
         | 1  | en-US  |    en     | English |    1    | 2018-01-14 18:06:33 | 2018-01-14 18:06:33 |
         | 2  | ru-RU  |    ru     | Русский |    0    | 2018-01-14 18:10:00 | 2018-01-14 18:10:00 |
-    ```
 
     Here,
     
@@ -408,7 +399,7 @@ process.
     use Itstructure\FieldWidgets\Fields.php;
     ```
     
-    like in example:
+    as in example:
     
     ```php
     $form = ActiveForm::begin();
@@ -442,7 +433,7 @@ process.
     
     Here,
     
-    - **Language** - is a class in ```Itstructure\AdminModule\models\Language.php```
+    - **Language** - is a class in `Itstructure\AdminModule\models\Language.php`
     
     - This widget (when for example two languages **ru** and **en**) will parse the form fields so:
     
@@ -458,10 +449,10 @@ process.
     will be single.
     
     - **$model** - will be set automatically in **CommonAdminController** as object of 
-    ```Itstructure\AdminModule\models\MultilanguageValidateModel```, in which the main model can 
+    `Itstructure\AdminModule\models\MultilanguageValidateModel`, in which the main model can 
     be set after define her class name by method **getModelName()**.
 
-10. Configure the multilanguage component ```multilanguage-validate-component``` for **admin** module with rules for validation 
+10. Configure the multilanguage component `multilanguage-validate-component` for **admin** module with rules for validation 
 multilanguage data in application config, like in example:
 
     ```php
@@ -544,11 +535,10 @@ multilanguage data in application config, like in example:
 
 **Useful feature:**
 
-After release 1.6.2 in ```MultilanguageValidateModel``` class the **mainModelAttributes()** method checking is added to check its presence in main model.
+After release 1.6.2 in `MultilanguageValidateModel` class the **mainModelAttributes()** method checking is added to check its presence in main model.
 This may be necessary when you need to validate fields that are not in the database table. These fields can be set in this method, in addition to the main fields. The method must return an array.
 
-License
-----------------------------
+## License
 
 Copyright © 2018-2020 Andrey Girnik girnikandrey@gmail.com.
 

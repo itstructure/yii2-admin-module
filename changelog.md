@@ -1,7 +1,10 @@
 ### CHANGE LOG:
 
+**1.8.1 June 22, 2020:**
+- Modify README syntax.
+
 **1.8.0 June 15, 2020:**
-- Added new boolean ```$setEditingScenarios``` attribute to ```CommonAdminController```. If it is true, scenarios **create** and **update** will be set automatically for app model extended from an ActiveRecord.
+- Added new boolean `$setEditingScenarios` attribute to `CommonAdminController`. If it is true, scenarios **create** and **update** will be set automatically for app model extended from an ActiveRecord.
 
 **1.7.4 June 12, 2020:**
 - Bug fix, add scenarios to ActiveRecord internal class.
@@ -16,30 +19,30 @@
 - Upgrade of the copyright time and add a personal site link.
 
 **1.7.0 July 15, 2019:**
-- Move scenarios constants to ```ModelInterface```. Set scenarios for main model in ```CommonAdminController``` (update, create).
+- Move scenarios constants to `ModelInterface`. Set scenarios for main model in `CommonAdminController` (update, create).
 
 **1.6.4 May 2, 2019:**
-- Set **protected** type for function ```findModel($key)``` in ```CommonAdminController```.
+- Set **protected** type for function `findModel($key)` in `CommonAdminController`.
 
 **1.6.3 April 21, 2019:**
-- in ```LanguageController``` bug fix for **actionSetDefault()** method: ```$language->default = $language->default == 0 ? 1 : 0```.
+- in `LanguageController` bug fix for **actionSetDefault()** method: `$language->default = $language->default == 0 ? 1 : 0`.
 - Fixes for Readme file.
 
 **1.6.2 February 24, 2019:**
-- in ```MultilanguageValidateModel``` class the **mainModelAttributes()** method checking is added to check its presence in main model.
+- in `MultilanguageValidateModel` class the **mainModelAttributes()** method checking is added to check its presence in main model.
 
 **1.6.1 August 5, 2018:**
 - Code fixes according with the PSR standards.
-- Add setter and getter for **mainModel** in ```MultilanguageValidateModel```.
+- Add setter and getter for **mainModel** in `MultilanguageValidateModel`.
 
 **1.6.0 August 1, 2018:**
-- Add ```urlPrefixNeighbor``` parameter in to ```AdminController``` for view links of neighbor entity.
+- Add `urlPrefixNeighbor` parameter in to `AdminController` for view links of neighbor entity.
 
 **1.5.1 June 16, 2018:**
-- Move ```urlPrefix``` parameter from ```CommonAdminController``` to ```AdminController``` for redirect and view links.
+- Move `urlPrefix` parameter from `CommonAdminController` to `AdminController` for redirect and view links.
 
 **1.5.0 June 16, 2018:**
-- Add ```urlPrefix``` parameter in to ```CommonAdminController``` for redirect and view links.
+- Add `urlPrefix` parameter in to `CommonAdminController` for redirect and view links.
 
 **1.4.0 May 12, 2018:**
 - Fixes bugs for attributes declaration in: CommonAdminController, ModelInterface, Language model, view template of language entity.
