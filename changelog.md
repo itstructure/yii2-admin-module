@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.2 August 1, 2020:**
+- Set translates for labels of `Language` model.
+
 **1.8.1 June 22, 2020:**
 - Modify README syntax.
 

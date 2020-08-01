@@ -2,6 +2,7 @@
 
 namespace Itstructure\AdminModule\models;
 
+use Itstructure\AdminModule\Module;
 use Itstructure\AdminModule\interfaces\ModelInterface;
 use Itstructure\FieldWidgets\interfaces\{LanguageListInterface, LanguageFieldInterface};
 
@@ -101,13 +102,13 @@ class Language extends ActiveRecord implements LanguageListInterface, LanguageFi
     public function attributeLabels()
     {
         return [
-            'id'         => 'ID',
-            'shortName'  => 'Short name',
-            'name'       => 'Name',
-            'locale'     => 'Locale',
-            'default'    => 'Default',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id'         => Module::t('main', 'ID'),
+            'shortName'  => Module::t('languages', 'Short name'),
+            'name'       => Module::t('languages', 'Language name'),
+            'locale'     => Module::t('languages', 'Locale'),
+            'default'    => Module::t('languages', 'Set this language as default'),
+            'created_at' => Module::t('main', 'Created date'),
+            'updated_at' => Module::t('main', 'Updated date'),
         ];
     }
 
