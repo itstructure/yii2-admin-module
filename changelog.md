@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.3 February 23, 2021:**
+- Upgrade copyright year.
+
 **1.8.2 August 1, 2020:**
 - Set translates for labels of `Language` model.
 

@@ -40,7 +40,7 @@ Addition module description you can see in my [Personal site](https://pack-devel
 
 Via composer:
 
-`composer require itstructure/yii2-admin-module ~1.8.2`
+`composer require itstructure/yii2-admin-module ~1.8.3`
 
 ## Usage
 
@@ -528,6 +528,6 @@ This may be necessary when you need to validate fields that are not in the datab
 
 ## License
 
-Copyright © 2018-2020 Andrey Girnik girnikandrey@gmail.com.
+Copyright © 2018-2021 Andrey Girnik girnikandrey@gmail.com.
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT). See LICENSE.txt for details.
