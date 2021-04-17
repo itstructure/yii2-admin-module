@@ -42,6 +42,8 @@ class AdminController extends Controller
      */
     public function init()
     {
+        parent::init();
+
         $this->view->params['user'] = Yii::$app->user->identity;
     }
 
