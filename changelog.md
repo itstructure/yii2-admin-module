@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.5 April 18, 2021:**
+- Bug fix with calling of dynamic method from class name by `call_user_func()`.
+
 **1.8.4 April 17, 2021:**
 - Bug fix: **Call to a member function validateCsrfToken() on string**.
 

@@ -70,11 +70,15 @@ class MultilanguageValidateModel extends Model implements ModelInterface
     {
         $dynamicAttributeLabels = [];
         $staticAttributeLabels = [];
+        $translateAttributeLabels = [];
 
-        $translateAttributeLabels = call_user_func([
-            $this->mainModel->getTranslateModelName(),
-            'attributeLabels',
-        ]);
+        $translateModelName = $this->mainModel->getTranslateModelName();
+
+        if (method_exists($translateModelName, 'attributeLabels')) {
+            /** @var Model $abstractTranslateModel */
+            $abstractTranslateModel = new $translateModelName();
+            $translateAttributeLabels = $abstractTranslateModel->attributeLabels();
+        }
 
         foreach ($this->dynamicFields as $fieldConditions) {
 
