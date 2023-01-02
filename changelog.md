@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.6 January 2, 2023:**
+- Upgrade copyright year.
+
 **1.8.5 April 18, 2021:**
 - Bug fix with calling of dynamic method from class name by `call_user_func()`.
 
