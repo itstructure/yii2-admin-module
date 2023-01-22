@@ -40,7 +40,7 @@ Addition module description you can see in my [Personal site](https://pack-devel
 
 Via composer:
 
-`composer require itstructure/yii2-admin-module ~1.8.6`
+`composer require itstructure/yii2-admin-module ~1.8.7`
 
 ## Usage
 

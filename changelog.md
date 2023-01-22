@@ -1,5 +1,8 @@
 ### CHANGE LOG:
 
+**1.8.7 January 22, 2023:**
+- Improve scrutinizer config.
+
 **1.8.6 January 2, 2023:**
 - Upgrade copyright year.
 
